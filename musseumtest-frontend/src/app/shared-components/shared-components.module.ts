@@ -4,10 +4,14 @@ import { Quizformat1Component } from './quizformat1/quizformat1.component';
 import { Quizformat2Component } from './quizformat2/quizformat2.component';
 import { Quizformat3Component } from './quizformat3/quizformat3.component';
 import { Quizformat4Component } from './quizformat4/quizformat4.component';
+import { FormsModule } from '@angular/forms';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    InputTextModule
   ],
   declarations: [
     Quizformat1Component,

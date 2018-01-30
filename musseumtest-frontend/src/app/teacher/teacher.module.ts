@@ -6,6 +6,8 @@ import { TeacherComponent } from './teacher/teacher.component';
 import {SharedComponentsModule} from '../shared-components/shared-components.module';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import {InputTextModule} from 'primeng/inputtext';
+
 const routes: Routes = [
   {path: '', component: TeacherComponent}
 ];
@@ -16,7 +18,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedComponentsModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    InputTextModule
   ],
   declarations: [TeacherComponent]
 })
