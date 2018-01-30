@@ -6,10 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {ButtonModule} from 'primeng/button';
 
+import {SharedComponentsModule} from '../shared-components/shared-components.module';
+
 @NgModule({
   imports: [
     CommonModule,
     RoutesRoutingModule,
+    SharedComponentsModule,
     ButtonModule
   ],
   declarations: [DashboardComponent]
