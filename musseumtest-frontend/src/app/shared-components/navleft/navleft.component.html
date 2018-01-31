@@ -1,0 +1,23 @@
+
+  <nav class="bg-dark" id="sidebar">
+    <!-- Sidebar Header
+    <div class="sidebar-header">
+      <h3>Collapsible Sidebar</h3>
+    </div>
+    -->
+
+    <!-- Sidebar Links -->
+    <ul class="list-unstyled components">
+      <li class="active"><a routerLink="/teacher">Inicio</a></li>
+      <li><a routerLink="/admincontent" >Clase</a></li>
+      <li><a routerLink="/quiz">Trivia</a></li>
+      <li><!-- Link with dropdown items -->
+        <a href="#homeSubmenu" routerLink="/quiz" data-toggle="collapse" aria-expanded="false">Usuarios</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li><a href="#">Page</a></li>
+          <li><a href="#">Page</a></li>
+          <li><a href="#">Page</a></li>
+        </ul>
+      <li><a routerLink="/adminsystem" >Reportes</a></li>
+    </ul>
+  </nav>
