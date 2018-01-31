@@ -1,3 +1,42 @@
-<p>
-  quizformat4 works!
-</p>
+
+<h2>Tipo pregunta selección múltiple</h2>
+
+
+<div class="ui-grid-row" >
+  <div class="ui-g-6">
+
+  </div>
+
+  <div class="ui-g-2">
+    <label>pregunta:</label>
+  </div>
+  <div class="ui-g-2">
+    <input type="text" size="30" pInputText [(ngModel)]="questionFormat1"/>
+  </div>
+  <div class="ui-g-2">
+
+  </div>
+
+</div>
+<div class="ui-grid-row" >
+  <div class="ui-g-6">
+
+  </div>
+
+  <div class="ui-g-2">
+    <label>Respuesta:</label>
+  </div>
+  <div class="ui-g-2">
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+      <div class="ui-g-12"><p-checkbox name="group1" value="New York" label="New York" [(ngModel)]="selectedCities" inputId="ny"></p-checkbox></div>
+      <div class="ui-g-12"><p-checkbox name="group1" value="San Francisco" label="San Francisco" [(ngModel)]="selectedCities" inputId="sf"></p-checkbox></div>
+      <div class="ui-g-12"><p-checkbox name="group1" value="Los Angeles" label="Los Angeles" [(ngModel)]="selectedCities" inputId="la"></p-checkbox></div>
+      <div class="ui-g-12"><p-checkbox name="group1" value="C" label="c" [(ngModel)]="selectedCities" inputId="c"></p-checkbox></div>
+      <div class="ui-g-12"><p-checkbox name="group1" value="D" label="d" [(ngModel)]="selectedCities" inputId="d"></p-checkbox></div>
+
+    </div>
+
+  </div>
+
+</div>
+

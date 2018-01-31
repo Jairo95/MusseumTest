@@ -1,6 +1,12 @@
+
 <div class="ui-grid-row" style="text-align: center">
   <label>seleccione tipo de pregunta</label>
-  <p-dropdown [options]="typeQuestions" [(ngModel)]="selectedtypeQuestion" placeholder="Seleccione tipo pregunta" optionLabel="name"></p-dropdown>
+    <p-dropdown [options]="typeQuestions" [(ngModel)]="selectedtypeQuestion" placeholder="Select a typo of question" optionLabel="name"></p-dropdown>
+  <p>Selected Type of question: {{selectedtypeQuestion ? selectedtypeQuestion.name : 'none'}}</p>
+</div>
+<div class="ui-grid-row">
+
+<app-mt-quizformat4></app-mt-quizformat4>
 </div>
 
-<app-quizformat1></app-quizformat1>
+

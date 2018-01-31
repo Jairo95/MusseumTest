@@ -9,7 +9,7 @@ import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {SharedModule} from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
-
+import {PasswordModule} from 'primeng/password';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     ButtonModule,
     DropdownModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    PasswordModule
   ],
   declarations: [LandingComponent, LoginComponent]
 })
