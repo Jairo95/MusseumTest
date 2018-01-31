@@ -1,12 +1,11 @@
 
 <div class="ui-grid-row" style="text-align: center">
-  <label>seleccione tipo de pregunta</label>
-    <p-dropdown [options]="typeQuestions" [(ngModel)]="selectedtypeQuestion" placeholder="Select a typo of question" optionLabel="name"></p-dropdown>
-  <p>Selected Type of question: {{selectedtypeQuestion ? selectedtypeQuestion.name : 'none'}}</p>
-</div>
-<div class="ui-grid-row">
-
-<app-mt-quizformat4></app-mt-quizformat4>
+  <p-dropdown [options]="typeQuestions" [(ngModel)]="selectedtypeQuestion" placeholder="Select a typo of question" optionLabel="label"></p-dropdown>
+  <p *ngIf="selectedtypeQuestion.value === '0'">No hay pregunta seleccionada</p>
+  <app-quizformat1 *ngIf="selectedtypeQuestion.value === '1'"></app-quizformat1>
+  <app-mt-quizformat2 *ngIf="selectedtypeQuestion.value === '2'"></app-mt-quizformat2>
+  <app-mt-quizformat3 *ngIf="selectedtypeQuestion.value === '3'"></app-mt-quizformat3>
+  <app-mt-quizformat4 *ngIf="selectedtypeQuestion.value === '4'"></app-mt-quizformat4>
 </div>
 
 
