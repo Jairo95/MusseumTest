@@ -14,7 +14,7 @@ namespace QuizAppWeb.Controllers
 {
     public class RolsController : ApiController
     {
-        private RolDbContext db = new RolDbContext();
+        private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Rols
         public IQueryable<Rol> GetRols()

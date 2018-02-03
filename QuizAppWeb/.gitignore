@@ -82,3 +82,10 @@ _[Ss]cripts
 .vs/QuizAppWeb/v15/Server/sqlite3/storage.ide-shm
 .vs/QuizAppWeb/v15/Server/sqlite3/storage.ide-wal
 .vs/QuizAppWeb/v15/Server/sqlite3/storage.ide
+
+
+## base
+QuizAppWeb/App_Data/MusseumTestContext*.mdf
+QuizAppWeb/App_Data/MusseumTestContext*.ldf
+
+

@@ -14,7 +14,7 @@ namespace QuizAppWeb.Controllers
 {
     public class UsersController : ApiController
     {
-        private UserDbContext db = new UserDbContext();
+        private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Users
         public IQueryable<User> GetUsers()

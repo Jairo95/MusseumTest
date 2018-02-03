@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 
 namespace QuizAppWeb.Models
 {
@@ -20,8 +19,4 @@ namespace QuizAppWeb.Models
 
     }
 
-    class RolDbContext : DbContext
-    {
-        public DbSet<Rol> Rols { get; set; }
-    }
 }
