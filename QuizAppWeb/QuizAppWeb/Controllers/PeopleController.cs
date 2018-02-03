@@ -14,19 +14,19 @@ namespace QuizAppWeb.Controllers
 {
     public class PeopleController : ApiController
     {
-        private PersonDbContext db = new PersonDbContext();
+        private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/People
-        public IQueryable<Person> GetPersons()
+        public IQueryable<Person> GetPeople()
         {
-            return db.Persons;
+            return db.People;
         }
 
         // GET: api/People/5
         [ResponseType(typeof(Person))]
         public IHttpActionResult GetPerson(int id)
         {
-            Person person = db.Persons.Find(id);
+            Person person = db.People.Find(id);
             if (person == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Persons.Add(person);
+            db.People.Add(person);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = person.PersonId }, person);
@@ -89,13 +89,13 @@ namespace QuizAppWeb.Controllers
         [ResponseType(typeof(Person))]
         public IHttpActionResult DeletePerson(int id)
         {
-            Person person = db.Persons.Find(id);
+            Person person = db.People.Find(id);
             if (person == null)
             {
                 return NotFound();
             }
 
-            db.Persons.Remove(person);
+            db.People.Remove(person);
             db.SaveChanges();
 
             return Ok(person);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool PersonExists(int id)
         {
-            return db.Persons.Count(e => e.PersonId == id) > 0;
+            return db.People.Count(e => e.PersonId == id) > 0;
         }
     }
 }

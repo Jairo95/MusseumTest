@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 
 namespace QuizAppWeb.Models
 {
@@ -20,9 +19,5 @@ namespace QuizAppWeb.Models
 
         public virtual ICollection<User> Users { get; set; }
 
-    }
-
-    class PersonDbContext : DbContext {
-        public DbSet<Person> Persons { get; set; }
     }
 }
