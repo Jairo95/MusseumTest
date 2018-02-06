@@ -11,10 +11,21 @@ namespace QuizAppWeb
         {
             config.MapHttpAttributeRoutes();
 
+            config.EnableCors();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "services/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "login",
+                routeTemplate: "musseum/{controller}/{username}/{password}",
+                defaults: new {
+                    username = RouteParameter.Optional,
+                    password = RouteParameter.Optional
+                }
             );
         }
     }

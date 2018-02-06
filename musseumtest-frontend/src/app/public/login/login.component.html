@@ -4,7 +4,7 @@
       <div class="ui-g-8">
         <div class="ui-grid-row">
                 <span class="ui-float-label">
-                <input id="float-input" type="text" size="20" pInputText>
+                <input id="float-input" type="text" size="20" pInputText [(ngModel)]="email">
                 <label for="float-input">Username</label>
                 </span>
         </div>
@@ -13,7 +13,7 @@
         </div>
         <div class="ui-grid-row">
                <span class="ui-float-label">
-              <input type="password" pPassword />
+              <input type="password" pPassword pInputText [(ngModel)]="password"/>
               <label for="float-input">Password</label>
               </span>
         </div>
@@ -26,7 +26,7 @@
         <br>
       </div>
     <div class="ui-grid-row" style="text-align: center">
-      <p-button (onClick)="count()" label="Ingresar" ></p-button>
+      <p-button (onClick)="login()" label="Ingresar" ></p-button>
     </div>
   </p-card>
 </div>

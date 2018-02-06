@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { LoginService } from './login/login.service';
+
 import { PublicRoutingModule } from './public-routing.module';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +23,12 @@ import {PasswordModule} from 'primeng/password';
     FormsModule,
     PasswordModule
   ],
-  declarations: [LandingComponent, LoginComponent]
+  declarations: [
+    LandingComponent,
+    LoginComponent
+  ],
+  providers: [
+    LoginService
+  ]
 })
 export class PublicModule { }

@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
+import { AuthGuard } from './guard/auth.guard';
 
 import { AppRoutingModule } from './app.routing';
 import { PublicModule } from './public/public.module';
@@ -56,7 +57,9 @@ import {DataTableModule} from 'primeng/datatable';
     DataTableModule
 
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
