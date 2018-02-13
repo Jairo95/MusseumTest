@@ -175,28 +175,45 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AnswersController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ClassroomsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LevelsController.cs" />
+    <Compile Include="Controllers\LogAnswersController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\QuizsController.cs" />
+    <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Controllers\RolsController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Answer.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Classroom.cs" />
-    <Compile Include="Models\Level.cs" />
-    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Custom\UserValidate.cs" />
+    <Compile Include="Models\Entities\Answer.cs" />
+    <Compile Include="Models\Entities\Category.cs" />
+    <Compile Include="Models\Entities\Classroom.cs" />
+    <Compile Include="Models\Entities\Level.cs" />
+    <Compile Include="Models\Entities\LogAnswer.cs" />
+    <Compile Include="Models\Entities\Login.cs" />
     <Compile Include="Models\LoginResponse.cs" />
+    <Compile Include="Models\MTException.cs" />
     <Compile Include="Models\MusseumTestContext.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Quiz.cs" />
-    <Compile Include="Models\Record.cs" />
-    <Compile Include="Models\Rol.cs" />
-    <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Entities\Person.cs" />
+    <Compile Include="Models\Entities\Question.cs" />
+    <Compile Include="Models\Entities\Quiz.cs" />
+    <Compile Include="Models\Entities\Record.cs" />
+    <Compile Include="Models\Entities\Rol.cs" />
+    <Compile Include="Models\Entities\Status.cs" />
+    <Compile Include="Models\Entities\User.cs" />
+    <Compile Include="Models\Views\ViewCategory.cs" />
+    <Compile Include="Models\Views\ViewLogin.cs" />
+    <Compile Include="Models\Views\ViewPerson.cs" />
+    <Compile Include="Models\Views\ViewRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

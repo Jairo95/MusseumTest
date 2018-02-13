@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { LoginService } from './login/login.service';
 
@@ -21,7 +22,8 @@ import {PasswordModule} from 'primeng/password';
     DropdownModule,
     SharedModule,
     FormsModule,
-    PasswordModule
+    PasswordModule,
+    HttpModule
   ],
   declarations: [
     LandingComponent,

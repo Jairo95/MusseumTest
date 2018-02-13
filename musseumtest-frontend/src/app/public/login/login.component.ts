@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.email, this.password)
       .subscribe(
         (response) => {
-          console.log("[RESPONSE]:", response);
-          let loginData = response;
-          this.status = loginData.status;
-          this.user = loginData.rol;
+          console.log('[RESPONSE]:', response);
+          const loginData = response;
+          this.status = loginData.Status;
+          this.user = loginData.Rol;
           if (this.status === 'ok') {
-            console.log('[LOGIN]: ',this.user);
+            console.log('[LOGIN]: ', this.user);
             localStorage.setItem('currentUser', JSON.stringify(this.user));
             this.router.navigate([this.returnUrl]);
           } else {
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           }
         },
         (error) => {
-          console.error("[ERROR]:", error);
+          console.error('[ERROR]: ', error);
         },
         () => {}
       );
