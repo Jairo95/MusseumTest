@@ -7,10 +7,10 @@ namespace QuizAppWeb.Models
 {
     public class LoginResponse
     {
-        public String status { get; set; }
+        public String Status { get; set; }
 
-        public String rol { get; set; }
+        public String Rol { get; set; }
 
-        public String error { get; set; }
+        public String Error { get; set; }
     }
 }

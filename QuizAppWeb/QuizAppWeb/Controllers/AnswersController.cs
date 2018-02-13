@@ -9,54 +9,47 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
-using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
-    public class PeopleController : ApiController
+    public class AnswersController : ApiController
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/People
-        public List<ViewPerson> GetPeople()
+        // GET: api/Answers
+        public IQueryable<Answer> GetAnswers()
         {
-            List<ViewPerson> listViewPerson = new List<ViewPerson>();
-            db.People.ToList<Person>().ForEach(delegate (Person person)
-            {
-                listViewPerson.Add(person);
-            });
-
-            return listViewPerson;
+            return db.Answers;
         }
 
-        // GET: api/People/5
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult GetPerson(int id)
+        // GET: api/Answers/5
+        [ResponseType(typeof(Answer))]
+        public IHttpActionResult GetAnswer(int id)
         {
-            Person person = db.People.Find(id);
-            if (person == null)
+            Answer answer = db.Answers.Find(id);
+            if (answer == null)
             {
                 return NotFound();
             }
 
-            return Ok(person);
+            return Ok(answer);
         }
 
-        // PUT: api/People/5
+        // PUT: api/Answers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPerson(int id, Person person)
+        public IHttpActionResult PutAnswer(int id, Answer answer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != person.PersonId)
+            if (id != answer.AnswerId)
             {
                 return BadRequest();
             }
 
-            db.Entry(person).State = EntityState.Modified;
+            db.Entry(answer).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +57,7 @@ namespace QuizAppWeb.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!AnswerExists(id))
                 {
                     return NotFound();
                 }
@@ -77,35 +70,35 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/People
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult PostPerson(Person person)
+        // POST: api/Answers
+        [ResponseType(typeof(Answer))]
+        public IHttpActionResult PostAnswer(Answer answer)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.People.Add(person);
+            db.Answers.Add(answer);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = person.PersonId }, person);
+            return CreatedAtRoute("DefaultApi", new { id = answer.AnswerId }, answer);
         }
 
-        // DELETE: api/People/5
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult DeletePerson(int id)
+        // DELETE: api/Answers/5
+        [ResponseType(typeof(Answer))]
+        public IHttpActionResult DeleteAnswer(int id)
         {
-            Person person = db.People.Find(id);
-            if (person == null)
+            Answer answer = db.Answers.Find(id);
+            if (answer == null)
             {
                 return NotFound();
             }
 
-            db.People.Remove(person);
+            db.Answers.Remove(answer);
             db.SaveChanges();
 
-            return Ok(person);
+            return Ok(answer);
         }
 
         protected override void Dispose(bool disposing)
@@ -117,9 +110,9 @@ namespace QuizAppWeb.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PersonExists(int id)
+        private bool AnswerExists(int id)
         {
-            return db.People.Count(e => e.PersonId == id) > 0;
+            return db.Answers.Count(e => e.AnswerId == id) > 0;
         }
     }
 }

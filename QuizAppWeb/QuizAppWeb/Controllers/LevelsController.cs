@@ -9,54 +9,47 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
-using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
-    public class PeopleController : ApiController
+    public class LevelsController : ApiController
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/People
-        public List<ViewPerson> GetPeople()
+        // GET: api/Levels
+        public IQueryable<Level> GetLevels()
         {
-            List<ViewPerson> listViewPerson = new List<ViewPerson>();
-            db.People.ToList<Person>().ForEach(delegate (Person person)
-            {
-                listViewPerson.Add(person);
-            });
-
-            return listViewPerson;
+            return db.Levels;
         }
 
-        // GET: api/People/5
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult GetPerson(int id)
+        // GET: api/Levels/5
+        [ResponseType(typeof(Level))]
+        public IHttpActionResult GetLevel(int id)
         {
-            Person person = db.People.Find(id);
-            if (person == null)
+            Level level = db.Levels.Find(id);
+            if (level == null)
             {
                 return NotFound();
             }
 
-            return Ok(person);
+            return Ok(level);
         }
 
-        // PUT: api/People/5
+        // PUT: api/Levels/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPerson(int id, Person person)
+        public IHttpActionResult PutLevel(int id, Level level)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != person.PersonId)
+            if (id != level.LevelId)
             {
                 return BadRequest();
             }
 
-            db.Entry(person).State = EntityState.Modified;
+            db.Entry(level).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +57,7 @@ namespace QuizAppWeb.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!LevelExists(id))
                 {
                     return NotFound();
                 }
@@ -77,35 +70,35 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/People
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult PostPerson(Person person)
+        // POST: api/Levels
+        [ResponseType(typeof(Level))]
+        public IHttpActionResult PostLevel(Level level)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.People.Add(person);
+            db.Levels.Add(level);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = person.PersonId }, person);
+            return CreatedAtRoute("DefaultApi", new { id = level.LevelId }, level);
         }
 
-        // DELETE: api/People/5
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult DeletePerson(int id)
+        // DELETE: api/Levels/5
+        [ResponseType(typeof(Level))]
+        public IHttpActionResult DeleteLevel(int id)
         {
-            Person person = db.People.Find(id);
-            if (person == null)
+            Level level = db.Levels.Find(id);
+            if (level == null)
             {
                 return NotFound();
             }
 
-            db.People.Remove(person);
+            db.Levels.Remove(level);
             db.SaveChanges();
 
-            return Ok(person);
+            return Ok(level);
         }
 
         protected override void Dispose(bool disposing)
@@ -117,9 +110,9 @@ namespace QuizAppWeb.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PersonExists(int id)
+        private bool LevelExists(int id)
         {
-            return db.People.Count(e => e.PersonId == id) > 0;
+            return db.Levels.Count(e => e.LevelId == id) > 0;
         }
     }
 }
