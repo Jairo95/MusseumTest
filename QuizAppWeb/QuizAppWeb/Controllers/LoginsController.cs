@@ -78,8 +78,9 @@ namespace QuizAppWeb.Controllers
         }
 
         // POST: api/Logins
+        [HttpPost]
         [ResponseType(typeof(LoginResponse))]
-        public IHttpActionResult PostLogin([FromBody] UserValidate userValidate)
+        public IHttpActionResult PostLogin([FromBody]UserValidate userValidate)
         {
             if (!ModelState.IsValid)
             {

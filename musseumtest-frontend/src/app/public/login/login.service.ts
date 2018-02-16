@@ -9,6 +9,7 @@ import {Http} from '@angular/http';
 import {RequestOptions} from '@angular/http';
 
 import { Uservalidate } from '../../models/uservalidate';
+import {Password} from 'primeng/primeng';
 
 @Injectable()
 export class LoginService {
@@ -21,12 +22,17 @@ export class LoginService {
 
 
   login(email, password): Observable<any> {
-
-    const httpOptions  = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+    const httpOptions  = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'});
+    //const httpOptions  = new HttpHeaders({'vontent-type': 'application/json'});
     const url = this.urlBase + '/api/Logins'
     const userValidate: Uservalidate = new Uservalidate();
+    userValidate.Username = email;
+    userValidate.Password = password;
+    const values = 'Username=' + email +'&Password=' + password;
     console.log('[URL]: ', url);
-    return this.http.post(url,{Username: email, Password: password}, {headers: httpOptions} );
+    console.log('[VALUE]: ' +  values);
+    // return this.http.post(url,  {Username: email, Password: password}, { headers: httpOptions} );
+    return this.http.post(url, values, { headers: httpOptions} );
   }
 
   logout() {

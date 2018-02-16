@@ -31,14 +31,15 @@ export class LoginComponent implements OnInit {
         (response) => {
           console.log('[RESPONSE]:', response);
           const loginData = response;
-          this.status = loginData.Status;
-          this.user = loginData.Rol;
+          this.status = loginData.status;
+          this.user = loginData.rol;
           if (this.status === 'ok') {
             console.log('[LOGIN]: ', this.user);
             localStorage.setItem('currentUser', JSON.stringify(this.user));
             this.router.navigate([this.returnUrl]);
           } else {
             this.errors = 'User or Password Wrong!';
+            console.log('[MESSAGE]: No logged');
           }
         },
         (error) => {
