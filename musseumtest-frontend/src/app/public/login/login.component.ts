@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   user: string;
   errors: string;
   returnUrl: string;
+  id: number;
+  usernameLogged: string;
   constructor(
     private loginService: LoginService,
     private route: ActivatedRoute,
@@ -32,9 +34,13 @@ export class LoginComponent implements OnInit {
           const loginData = response;
           this.status = loginData.Status;
           this.user = loginData.Rol;
+          this.id = loginData.UserId;
+          this.usernameLogged = loginData.Username;
           if (this.status === 'ok') {
             localStorage.setItem('status', 'logged');
             localStorage.setItem('user', this.user);
+            localStorage.setItem('id', this.id.toString());
+            localStorage.setItem('username', this.usernameLogged);
             this.redirectTo(this.user);
           } else {
             this.errors = 'User or Password Wrong!';

@@ -22,29 +22,28 @@ namespace QuizAppWeb.Models
 
         }
 
-        public DbSet<Rol> Rols { get; set; }
-        public DbSet<Person> People { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<ViewCategory> Category { get; set; }
+        public DbSet<Rol> Rol { get; set; }
+        public DbSet<Person> Person { get; set; }
+        public DbSet<User> User { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Classroom> Classrooms { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Classroom> Classroom { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Login> Logins { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Login> Login { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Record> Records { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Record> Record { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.LogAnswer> LogAnswers { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.LogAnswer> LogAnswer { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Quiz> Quizs { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Quiz> Quiz { get; set; }
 
         public System.Data.Entity.DbSet<QuizAppWeb.Models.Status> Status { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Level> Levels { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Level> Level { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Category> Categories { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Category> Category { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Question> Questions { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Question> Question { get; set; }
 
-        public System.Data.Entity.DbSet<QuizAppWeb.Models.Answer> Answers { get; set; }
+        public System.Data.Entity.DbSet<QuizAppWeb.Models.Answer> Answer { get; set; }
     }
 }

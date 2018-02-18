@@ -16,7 +16,7 @@ namespace QuizAppWeb.Controllers
         // GET: api/Answers
         public List<ViewCategory> GetCategory()
         {
-            List<Category> listCategory = db.Categories.ToList<Category>();
+            List<Category> listCategory = db.Category.ToList<Category>();
 
             List<ViewCategory> listViewCategory = new List<ViewCategory>();
             listCategory.ForEach(delegate(Category category)

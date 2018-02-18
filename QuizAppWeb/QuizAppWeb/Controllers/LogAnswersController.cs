@@ -16,17 +16,17 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/LogAnswers
+        // GET: api/LogAnswer
         public IQueryable<LogAnswer> GetLogAnswers()
         {
-            return db.LogAnswers;
+            return db.LogAnswer;
         }
 
-        // GET: api/LogAnswers/5
+        // GET: api/LogAnswer/5
         [ResponseType(typeof(LogAnswer))]
         public IHttpActionResult GetLogAnswer(int id)
         {
-            LogAnswer logAnswer = db.LogAnswers.Find(id);
+            LogAnswer logAnswer = db.LogAnswer.Find(id);
             if (logAnswer == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace QuizAppWeb.Controllers
             return Ok(logAnswer);
         }
 
-        // PUT: api/LogAnswers/5
+        // PUT: api/LogAnswer/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutLogAnswer(int id, LogAnswer logAnswer)
         {
@@ -70,7 +70,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/LogAnswers
+        // POST: api/LogAnswer
         [ResponseType(typeof(LogAnswer))]
         public IHttpActionResult PostLogAnswer(LogAnswer logAnswer)
         {
@@ -79,23 +79,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.LogAnswers.Add(logAnswer);
+            db.LogAnswer.Add(logAnswer);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = logAnswer.LogAnswerId }, logAnswer);
         }
 
-        // DELETE: api/LogAnswers/5
+        // DELETE: api/LogAnswer/5
         [ResponseType(typeof(LogAnswer))]
         public IHttpActionResult DeleteLogAnswer(int id)
         {
-            LogAnswer logAnswer = db.LogAnswers.Find(id);
+            LogAnswer logAnswer = db.LogAnswer.Find(id);
             if (logAnswer == null)
             {
                 return NotFound();
             }
 
-            db.LogAnswers.Remove(logAnswer);
+            db.LogAnswer.Remove(logAnswer);
             db.SaveChanges();
 
             return Ok(logAnswer);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool LogAnswerExists(int id)
         {
-            return db.LogAnswers.Count(e => e.LogAnswerId == id) > 0;
+            return db.LogAnswer.Count(e => e.LogAnswerId == id) > 0;
         }
     }
 }

@@ -19,14 +19,14 @@ namespace QuizAppWeb.Controllers
         // GET: api/Classrooms
         public IQueryable<Classroom> GetClassrooms()
         {
-            return db.Classrooms;
+            return db.Classroom;
         }
 
         // GET: api/Classrooms/5
         [ResponseType(typeof(Classroom))]
         public IHttpActionResult GetClassroom(int id)
         {
-            Classroom classroom = db.Classrooms.Find(id);
+            Classroom classroom = db.Classroom.Find(id);
             if (classroom == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Classrooms.Add(classroom);
+            db.Classroom.Add(classroom);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = classroom.ClassroomId }, classroom);
@@ -89,13 +89,13 @@ namespace QuizAppWeb.Controllers
         [ResponseType(typeof(Classroom))]
         public IHttpActionResult DeleteClassroom(int id)
         {
-            Classroom classroom = db.Classrooms.Find(id);
+            Classroom classroom = db.Classroom.Find(id);
             if (classroom == null)
             {
                 return NotFound();
             }
 
-            db.Classrooms.Remove(classroom);
+            db.Classroom.Remove(classroom);
             db.SaveChanges();
 
             return Ok(classroom);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool ClassroomExists(int id)
         {
-            return db.Classrooms.Count(e => e.ClassroomId == id) > 0;
+            return db.Classroom.Count(e => e.ClassroomId == id) > 0;
         }
     }
 }

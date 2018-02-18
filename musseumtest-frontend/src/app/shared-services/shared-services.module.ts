@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import {PersonService} from './person/person.service';
 import {EnviromentService} from './enviroment/enviroment.service';
+import {ClassroomService} from './classroom/classroom.service';
+import {RolService} from './rol/rol.service';
 
 @NgModule({
   imports: [
@@ -11,7 +13,9 @@ import {EnviromentService} from './enviroment/enviroment.service';
   declarations: [],
   providers: [
     PersonService,
-    EnviromentService
+    EnviromentService,
+    RolService,
+    ClassroomService
   ]
 })
 export class SharedServicesModule { }

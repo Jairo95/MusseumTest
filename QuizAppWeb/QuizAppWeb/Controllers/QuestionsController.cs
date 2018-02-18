@@ -16,17 +16,17 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Questions
+        // GET: api/Question
         public IQueryable<Question> GetQuestions()
         {
-            return db.Questions;
+            return db.Question;
         }
 
-        // GET: api/Questions/5
+        // GET: api/Question/5
         [ResponseType(typeof(Question))]
         public IHttpActionResult GetQuestion(int id)
         {
-            Question question = db.Questions.Find(id);
+            Question question = db.Question.Find(id);
             if (question == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace QuizAppWeb.Controllers
             return Ok(question);
         }
 
-        // PUT: api/Questions/5
+        // PUT: api/Question/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutQuestion(int id, Question question)
         {
@@ -70,7 +70,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Questions
+        // POST: api/Question
         [ResponseType(typeof(Question))]
         public IHttpActionResult PostQuestion(Question question)
         {
@@ -79,23 +79,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Questions.Add(question);
+            db.Question.Add(question);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = question.QuestionId }, question);
         }
 
-        // DELETE: api/Questions/5
+        // DELETE: api/Question/5
         [ResponseType(typeof(Question))]
         public IHttpActionResult DeleteQuestion(int id)
         {
-            Question question = db.Questions.Find(id);
+            Question question = db.Question.Find(id);
             if (question == null)
             {
                 return NotFound();
             }
 
-            db.Questions.Remove(question);
+            db.Question.Remove(question);
             db.SaveChanges();
 
             return Ok(question);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool QuestionExists(int id)
         {
-            return db.Questions.Count(e => e.QuestionId == id) > 0;
+            return db.Question.Count(e => e.QuestionId == id) > 0;
         }
     }
 }

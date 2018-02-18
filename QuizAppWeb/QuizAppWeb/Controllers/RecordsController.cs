@@ -16,17 +16,17 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Records
+        // GET: api/Record
         public IQueryable<Record> GetRecords()
         {
-            return db.Records;
+            return db.Record;
         }
 
-        // GET: api/Records/5
+        // GET: api/Record/5
         [ResponseType(typeof(Record))]
         public IHttpActionResult GetRecord(int id)
         {
-            Record record = db.Records.Find(id);
+            Record record = db.Record.Find(id);
             if (record == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace QuizAppWeb.Controllers
             return Ok(record);
         }
 
-        // PUT: api/Records/5
+        // PUT: api/Record/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRecord(int id, Record record)
         {
@@ -70,7 +70,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Records
+        // POST: api/Record
         [ResponseType(typeof(Record))]
         public IHttpActionResult PostRecord(Record record)
         {
@@ -79,23 +79,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Records.Add(record);
+            db.Record.Add(record);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = record.RecordId }, record);
         }
 
-        // DELETE: api/Records/5
+        // DELETE: api/Record/5
         [ResponseType(typeof(Record))]
         public IHttpActionResult DeleteRecord(int id)
         {
-            Record record = db.Records.Find(id);
+            Record record = db.Record.Find(id);
             if (record == null)
             {
                 return NotFound();
             }
 
-            db.Records.Remove(record);
+            db.Record.Remove(record);
             db.SaveChanges();
 
             return Ok(record);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool RecordExists(int id)
         {
-            return db.Records.Count(e => e.RecordId == id) > 0;
+            return db.Record.Count(e => e.RecordId == id) > 0;
         }
     }
 }

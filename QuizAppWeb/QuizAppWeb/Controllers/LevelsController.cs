@@ -16,17 +16,17 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Levels
+        // GET: api/Level
         public IQueryable<Level> GetLevels()
         {
-            return db.Levels;
+            return db.Level;
         }
 
-        // GET: api/Levels/5
+        // GET: api/Level/5
         [ResponseType(typeof(Level))]
         public IHttpActionResult GetLevel(int id)
         {
-            Level level = db.Levels.Find(id);
+            Level level = db.Level.Find(id);
             if (level == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace QuizAppWeb.Controllers
             return Ok(level);
         }
 
-        // PUT: api/Levels/5
+        // PUT: api/Level/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutLevel(int id, Level level)
         {
@@ -70,7 +70,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Levels
+        // POST: api/Level
         [ResponseType(typeof(Level))]
         public IHttpActionResult PostLevel(Level level)
         {
@@ -79,23 +79,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Levels.Add(level);
+            db.Level.Add(level);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = level.LevelId }, level);
         }
 
-        // DELETE: api/Levels/5
+        // DELETE: api/Level/5
         [ResponseType(typeof(Level))]
         public IHttpActionResult DeleteLevel(int id)
         {
-            Level level = db.Levels.Find(id);
+            Level level = db.Level.Find(id);
             if (level == null)
             {
                 return NotFound();
             }
 
-            db.Levels.Remove(level);
+            db.Level.Remove(level);
             db.SaveChanges();
 
             return Ok(level);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool LevelExists(int id)
         {
-            return db.Levels.Count(e => e.LevelId == id) > 0;
+            return db.Level.Count(e => e.LevelId == id) > 0;
         }
     }
 }
