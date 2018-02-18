@@ -42,6 +42,21 @@ namespace QuizAppWeb.Controllers
             return user;
         }
 
+        [HttpGet]
+        [Route("api/Users/{personId}/{rolId}")]
+        public ViewUser GetUserByPersonAndRol(int personId, int rolId)
+        {
+            User userDb = db.User.Where(u => u.RolId == rolId && u.PersonId == personId)
+                .FirstOrDefault();
+            if(userDb == null)
+            {
+                throw new Exception("No hay datos");
+            }
+            ViewUser user = userDb;
+            return  user;
+        }
+
+
         // PUT: api/User/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)

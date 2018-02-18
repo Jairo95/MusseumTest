@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchpeopleComponent } from './users/searchpeople/searchpeople.component';
 import { PeopleComponent } from './users/people/people.component';
+import { DynamicuserComponent } from './users/dynamicuser/dynamicuser.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { PeopleComponent } from './users/people/people.component';
     NavleftComponent,
     NotFoundComponent,
     SearchpeopleComponent,
-    PeopleComponent
+    PeopleComponent,
+    DynamicuserComponent
   ],
   exports: [
     NavtopComponent,
@@ -59,7 +61,8 @@ import { PeopleComponent } from './users/people/people.component';
     NavleftComponent,
     NotFoundComponent,
     SearchpeopleComponent,
-    PeopleComponent
+    PeopleComponent,
+    DynamicuserComponent
   ]
 })
 export class SharedComponentsModule { }

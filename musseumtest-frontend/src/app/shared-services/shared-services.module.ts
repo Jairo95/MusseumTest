@@ -5,6 +5,9 @@ import {PersonService} from './person/person.service';
 import {EnviromentService} from './enviroment/enviroment.service';
 import {ClassroomService} from './classroom/classroom.service';
 import {RolService} from './rol/rol.service';
+import {UserService} from './user/user.service';
+import {SessionService} from './session/session.service';
+import {RequestService} from './util/request.service';
 
 @NgModule({
   imports: [
@@ -15,7 +18,10 @@ import {RolService} from './rol/rol.service';
     PersonService,
     EnviromentService,
     RolService,
-    ClassroomService
+    ClassroomService,
+    UserService,
+    SessionService,
+    RequestService
   ]
 })
 export class SharedServicesModule { }

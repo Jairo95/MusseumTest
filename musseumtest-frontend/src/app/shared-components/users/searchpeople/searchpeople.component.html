@@ -1,9 +1,4 @@
-<p-fieldset [toggleable]="true" [collapsed]="true">
-  <p-header>Filtrar</p-header>
-  <p>Filtro</p>
-</p-fieldset>
-
-<h3 class="first">Single Row Selection</h3>
+<strong>Personas</strong>
 <p-table [columns]="cols" [value]="people" selectionMode="single"
          [(selection)]="selectedPerson" [rows]="5"
         (onRowSelect)="onPersonSelected()"
@@ -21,10 +16,5 @@
         {{rowData[col.field]}}
       </td>
     </tr>
-  </ng-template>
-  <ng-template pTemplate="summary">
-    <div style="text-align: center">
-      Selected Person: {{selectedPerson ? selectedPerson.Name : 'Nada'}}
-    </div>
   </ng-template>
 </p-table>

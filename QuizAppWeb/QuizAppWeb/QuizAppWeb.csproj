@@ -211,6 +211,7 @@
     <Compile Include="Models\Entities\Status.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Views\ViewCategory.cs" />
+    <Compile Include="Models\Views\ViewClassroom.cs" />
     <Compile Include="Models\Views\ViewLogin.cs" />
     <Compile Include="Models\Views\ViewPerson.cs" />
     <Compile Include="Models\Views\ViewRol.cs" />

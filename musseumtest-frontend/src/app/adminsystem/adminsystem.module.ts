@@ -16,13 +16,17 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {FieldsetModule} from 'primeng/fieldset';
 import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
+import {ButtonModule} from 'primeng/button';
+import { TeacherforadminsystemComponent } from './teacherforadminsystem/teacherforadminsystem.component';
+import { AdminsystemforadminsystemComponent } from './adminsystemforadminsystem/adminsystemforadminsystem.component';
+import { AdmincontentforadminsystemComponent } from './admincontentforadminsystem/admincontentforadminsystem.component';
 
 const routes: Routes = [
   {path: '', component: AdminsystemComponent},
   {path: 'users', component: UserforadminsystemComponent},
-  {path: 'teachers', component: AdminsystemComponent},
-  {path: 'adminsystems', component: AdminsystemComponent},
-  {path: 'admincontents', component: AdminsystemComponent},
+  {path: 'teachers', component: TeacherforadminsystemComponent},
+  {path: 'adminsystems', component: AdminsystemforadminsystemComponent},
+  {path: 'admincontents', component: AdmincontentforadminsystemComponent},
   {path: 'quizzes', component: AdminsystemComponent},
   {path: 'reports', component: AdminsystemComponent}
 ];
@@ -41,8 +45,9 @@ const routes: Routes = [
     CardModule,
     FieldsetModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    ButtonModule
   ],
-  declarations: [AdminsystemComponent, UserforadminsystemComponent]
+  declarations: [AdminsystemComponent, UserforadminsystemComponent, TeacherforadminsystemComponent, AdminsystemforadminsystemComponent, AdmincontentforadminsystemComponent]
 })
 export class AdminsystemModule { }

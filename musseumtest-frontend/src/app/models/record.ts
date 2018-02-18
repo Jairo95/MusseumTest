@@ -1,3 +1,3 @@
-export class Record{
+export class Record {
 
 }

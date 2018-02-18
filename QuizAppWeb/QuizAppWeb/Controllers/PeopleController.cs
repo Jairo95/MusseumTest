@@ -28,6 +28,21 @@ namespace QuizAppWeb.Controllers
 
             return listViewPerson;
         }
+        [HttpGet]
+        [Route("api/People/byRol/{rolId}")]
+        public List<ViewPerson> GetPeopleByRol(int rolId)
+        {
+            List<ViewPerson> listViewPerson = new List<ViewPerson>();
+            List<Person> listPerson= (from p in db.Person
+                                      join u in db.User on p.PersonId equals u.PersonId
+                                      where u.RolId == rolId
+                                      select p).ToList<Person>();
+            listPerson.ForEach(delegate (Person person)
+            {
+                listViewPerson.Add(person);
+            });
+            return listViewPerson;
+        }
 
         // GET: api/Person/5
         public ViewPerson GetPerson(int id)
@@ -41,6 +56,7 @@ namespace QuizAppWeb.Controllers
 
             return person;
         }
+
 
         // PUT: api/Person/5
         [ResponseType(typeof(void))]
@@ -79,7 +95,7 @@ namespace QuizAppWeb.Controllers
 
         // POST: api/Person
         [HttpPost]
-        public ViewPerson PostPerson(Person person)
+        public ViewPerson PostPerson([FromBody]Person person)
         {
             if (!ModelState.IsValid)
             {

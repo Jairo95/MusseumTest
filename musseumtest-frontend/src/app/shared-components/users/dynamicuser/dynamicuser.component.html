@@ -1,0 +1,18 @@
+<p-card >
+  <p-header>{{header}}</p-header>
+  <app-searchpeople
+    [rol]="rolInAction"
+    (onPersonSelectedEvent)="onPersonSelected($event)"
+    *ngIf="isModeList"
+  ></app-searchpeople>
+  <div class="mt-float-center" *ngIf="isModeList">
+    <button pButton type="button" (click)="createUser()" label="Nuevo"></button>
+  </div>
+  <app-people
+    [modeAction]="isForPeople"
+    [person]="person"
+    [rol]="rolInAction"
+    (finish)="onFinish($event)"
+    *ngIf="!isModeList"
+  ></app-people>
+</p-card>
