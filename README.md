@@ -35,25 +35,26 @@ Permitir a los Coordinadores del museo tener una herramienta interactiva para ev
 ## To-Do
 En cada subdirectorio se especifica más detalladamente que se debe realizar. En esta sección se indica las tareas que debe realizar cada integrante del equipo a lo largo del proyecto. Si un integrante acaba su parte debe ayudar a los demás a finalizar.
 
-Cada colaborador del proyecto debe generar su propia rama de trabajo. Y realizar un pull request cuando vaya a integrar sus cambios para evitar conflictos.
+**Cada colaborador del proyecto debe generar su propia rama de trabajo _OBLIGATORIAMENTE_**. Y realizar un pull request cuando vaya a integrar sus cambios para evitar conflictos.
 
-Estas son las responsabilidades tentativas. Las tareas pueden aumentar, dividirse o eliminarse de ser necesario, al igual que el encargado de cada uno
 ###  Tareas
 * Stack
     * Inicialización de proyecto. - Jairo
     * Generación de estructura básica del proyecto. - Jairo
     * Arquitectura de aplicación. - Jairo
+    * Generacion de compontes generales. - Jairo
 * Frontend
     * Login - Jairo
-    * Modulo de administrador. -  Edison
-    * Modulo de profesor. - Wilmer
+    * Modulo de administrador. -  Jairo
+    * Modulo de profesor. - Daniel
+    * Modulo de administrador de contenido. - Edison
     * Trivia. - Wilmer
     * Reportes de todos los módulos. - Jairo
 * Backend
     * Login. - Marlon
     * Modulo de administrador. - Christian 
-    * Modulo de profesor. Daniel 
-    * Trivia. - Christian
-    * Reportes de todos los módulos. - Jairo
-
+    * Modulo de profesor. Daniel
+    * Modulo de administrador de contenido. - Edison
+    * Trivia. - Wilmer
+    * Reportes de todos los módulos. - Christian
 
