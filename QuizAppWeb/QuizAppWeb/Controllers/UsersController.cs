@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
+using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
@@ -17,22 +18,28 @@ namespace QuizAppWeb.Controllers
         private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Users
-        public IQueryable<User> GetUsers()
+        public List<ViewUser> GetUsers()
         {
-            return db.Users;
+
+            List<ViewUser> listViewUser = new List<ViewUser>();
+            db.Users.ToList<User>().ForEach(delegate (User user)
+            {
+                listViewUser.Add(user);
+            });
+
+            return listViewUser;
         }
 
         // GET: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public ViewUser GetUser(int id)
         {
-            User user = db.Users.Find(id);
+            ViewUser user = db.Users.Find(id);
             if (user == null)
             {
-                return NotFound();
+                throw new Exception("Usuario no encontrado");
             }
 
-            return Ok(user);
+            return user;
         }
 
         // PUT: api/Users/5
@@ -71,18 +78,20 @@ namespace QuizAppWeb.Controllers
         }
 
         // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        [HttpPost]
+        public ViewUser PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new Exception("No valido");
             }
 
             db.Users.Add(user);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = user.UserId }, user);
+            ViewUser viewUser = user;
+
+            return viewUser;
         }
 
         // DELETE: api/Users/5

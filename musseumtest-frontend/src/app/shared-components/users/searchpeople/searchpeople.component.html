@@ -1,0 +1,30 @@
+<p-fieldset [toggleable]="true" [collapsed]="true">
+  <p-header>Filtrar</p-header>
+  <p>Filtro</p>
+</p-fieldset>
+
+<h3 class="first">Single Row Selection</h3>
+<p-table [columns]="cols" [value]="people" selectionMode="single"
+         [(selection)]="selectedPerson" [rows]="5"
+        (onRowSelect)="onPersonSelected()"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr [pSelectableRow]="rowData">
+      <td *ngFor="let col of columns">
+        {{rowData[col.field]}}
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div style="text-align: center">
+      Selected Person: {{selectedPerson ? selectedPerson.Name : 'Nada'}}
+    </div>
+  </ng-template>
+</p-table>

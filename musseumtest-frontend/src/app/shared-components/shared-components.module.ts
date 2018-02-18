@@ -10,11 +10,17 @@ import { FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {CardModule} from 'primeng/card';
-
+import {FieldsetModule} from 'primeng/fieldset';
+import {TableModule} from 'primeng/table';
+import {TabViewModule} from 'primeng/tabview';
+import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
 
 import { NavleftComponent } from './navleft/navleft.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchpeopleComponent } from './users/searchpeople/searchpeople.component';
+import { PeopleComponent } from './users/people/people.component';
 
 
 @NgModule({
@@ -26,8 +32,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     RadioButtonModule,
     RouterModule,
     CheckboxModule,
-    CardModule
-
+    CardModule,
+    FieldsetModule,
+    TableModule,
+    TabViewModule,
+    ButtonModule,
+    DropdownModule
   ],
   declarations: [
     NavtopComponent,
@@ -36,7 +46,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     Quizformat3Component,
     Quizformat4Component,
     NavleftComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchpeopleComponent,
+    PeopleComponent
   ],
   exports: [
     NavtopComponent,
@@ -45,7 +57,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     Quizformat3Component,
     Quizformat4Component,
     NavleftComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SearchpeopleComponent,
+    PeopleComponent
   ]
 })
 export class SharedComponentsModule { }

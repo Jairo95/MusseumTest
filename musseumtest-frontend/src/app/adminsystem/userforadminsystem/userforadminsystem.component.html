@@ -1,0 +1,12 @@
+<p-card >
+  <p-header>Usuarios</p-header>
+  <app-searchpeople
+    [rol]="1"
+    (onPersonSelectedEvent)="onPersonSelected($event)"
+    *ngIf="isModeList"
+  ></app-searchpeople>
+  <app-people
+    [person]="person"
+    *ngIf="!isModeList"
+  ></app-people>
+</p-card>
