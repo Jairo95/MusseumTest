@@ -9,8 +9,12 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import {CardModule} from 'primeng/card';
+
+
 import { NavleftComponent } from './navleft/navleft.component';
 import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -21,7 +25,8 @@ import { RouterModule } from '@angular/router';
     InputTextModule,
     RadioButtonModule,
     RouterModule,
-    CheckboxModule
+    CheckboxModule,
+    CardModule
 
   ],
   declarations: [
@@ -30,7 +35,8 @@ import { RouterModule } from '@angular/router';
     Quizformat2Component,
     Quizformat3Component,
     Quizformat4Component,
-    NavleftComponent
+    NavleftComponent,
+    NotFoundComponent
   ],
   exports: [
     NavtopComponent,
@@ -38,7 +44,8 @@ import { RouterModule } from '@angular/router';
     Quizformat2Component,
     Quizformat3Component,
     Quizformat4Component,
-    NavleftComponent
+    NavleftComponent,
+    NotFoundComponent
   ]
 })
 export class SharedComponentsModule { }

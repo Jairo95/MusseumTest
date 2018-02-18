@@ -9,7 +9,11 @@ import { FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 
 const routes: Routes = [
-  {path: '', component: TeacherComponent}
+  {path: '', component: TeacherComponent},
+  {path: 'class', component: TeacherComponent},
+  {path: 'users', component: TeacherComponent},
+  {path: 'quizzes', component: TeacherComponent},
+  {path: 'reports', component: TeacherComponent}
 ];
 
 @NgModule({

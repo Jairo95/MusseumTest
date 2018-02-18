@@ -8,6 +8,10 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guard/auth.guard';
+import { UserRolGuard } from './guard/userrol.guard';
+import { TeacherRolGuard } from './guard/teacherrol.guard';
+import { AdminContentRolGuard } from './guard/admincontentrol.guard';
+import { AdminSystemRolGuard } from './guard/adminsystemrol.guard';
 
 import { AppRoutingModule } from './app.routing';
 import { PublicModule } from './public/public.module';
@@ -58,7 +62,11 @@ import {DataTableModule} from 'primeng/datatable';
 
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    UserRolGuard,
+    TeacherRolGuard,
+    AdminContentRolGuard,
+    AdminSystemRolGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -13,6 +13,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {SharedModule} from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
 import {PasswordModule} from 'primeng/password';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +28,8 @@ import {PasswordModule} from 'primeng/password';
   ],
   declarations: [
     LandingComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   providers: [
     LoginService
