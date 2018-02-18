@@ -21,14 +21,14 @@ namespace QuizAppWeb
                 Newtonsoft.Json.PreserveReferencesHandling.Objects;
             
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
             config.Formatters.Insert(0, new System.Net.Http.Formatting.JsonMediaTypeFormatter());
 
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             */
 
-
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

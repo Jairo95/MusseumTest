@@ -30,16 +30,16 @@ namespace QuizAppWeb.Controllers
         }
 
         // GET: api/People/5
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult GetPerson(int id)
+        public ViewPerson GetPerson(int id)
         {
-            Person person = db.People.Find(id);
+            ViewPerson person = db.People.Find(id);
             if (person == null)
             {
-                return NotFound();
+                Exception ex = new Exception("Persona no encontrada");
+                throw ex;
             }
 
-            return Ok(person);
+            return person;
         }
 
         // PUT: api/People/5
@@ -78,18 +78,17 @@ namespace QuizAppWeb.Controllers
         }
 
         // POST: api/People
-        [ResponseType(typeof(Person))]
-        public IHttpActionResult PostPerson(Person person)
+        [HttpPost]
+        public ViewPerson PostPerson(Person person)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new Exception("No valido");
             }
-
             db.People.Add(person);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = person.PersonId }, person);
+            ViewPerson viewPerson = person;
+            return viewPerson;
         }
 
         // DELETE: api/People/5
