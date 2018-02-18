@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
   user: string;
   errors: string;
-  returnUrl = '/musseum/teacher';
+  returnUrl: string;
   constructor(
     private loginService: LoginService,
     private route: ActivatedRoute,
@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loginService.logout();
   }
 
   login() {
@@ -31,12 +30,12 @@ export class LoginComponent implements OnInit {
         (response) => {
           console.log('[RESPONSE]:', response);
           const loginData = response;
-          this.status = loginData.status;
-          this.user = loginData.rol;
+          this.status = loginData.Status;
+          this.user = loginData.Rol;
           if (this.status === 'ok') {
-            console.log('[LOGIN]: ', this.user);
-            localStorage.setItem('currentUser', JSON.stringify(this.user));
-            this.router.navigate([this.returnUrl]);
+            localStorage.setItem('status', 'logged');
+            localStorage.setItem('user', this.user);
+            this.redirectTo(this.user);
           } else {
             this.errors = 'User or Password Wrong!';
             console.log('[MESSAGE]: No logged');
@@ -47,6 +46,22 @@ export class LoginComponent implements OnInit {
         },
         () => {}
       );
+  }
+
+  redirectTo(user: string) {
+    console.log('[USER]: ', user);
+    if ( user === 'user') {
+      this.returnUrl = '/musseum/user';
+    } else if ( user === 'teacher') {
+      this.returnUrl = '/musseum/teacher';
+    } else if ( user === 'admincontent') {
+      this.returnUrl = '/musseum/admincontent';
+    } else if ( user === 'adminsystem') {
+      this.returnUrl = '/musseum/adminsystem';
+    } else {
+      this.returnUrl = '/login';
+    }
+    this.router.navigate([this.returnUrl]);
   }
 
 }

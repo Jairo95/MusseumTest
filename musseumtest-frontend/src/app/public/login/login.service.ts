@@ -5,38 +5,34 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
-import {Http} from '@angular/http';
-import {RequestOptions} from '@angular/http';
-
 import { Uservalidate } from '../../models/uservalidate';
-import {Password} from 'primeng/primeng';
 
 @Injectable()
 export class LoginService {
   urlBase = 'http://localhost:50446';
 
   constructor(
-    private http: HttpClient,
-    private _http: Http
+    private http: HttpClient
   ) { }
 
 
   login(email, password): Observable<any> {
-    const httpOptions  = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'});
-    //const httpOptions  = new HttpHeaders({'vontent-type': 'application/json'});
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      })
+    };
     const url = this.urlBase + '/api/Logins'
-    const userValidate: Uservalidate = new Uservalidate();
-    userValidate.Username = email;
-    userValidate.Password = password;
-    const values = 'Username=' + email +'&Password=' + password;
-    console.log('[URL]: ', url);
-    console.log('[VALUE]: ' +  values);
-    // return this.http.post(url,  {Username: email, Password: password}, { headers: httpOptions} );
-    return this.http.post(url, values, { headers: httpOptions} );
+    const body = new URLSearchParams();
+    body.set('Username', email);
+    body.set('Password', password);
+    return this.http.post(url, body.toString(), httpOptions );
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('user');
+    localStorage.removeItem('status');
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -53,7 +49,5 @@ export class LoginService {
     // return an ErrorObservable with a user-facing error message
     return new ErrorObservable(
       'Something bad happened; please try again later.');
-  };
-
-
+  }
 }

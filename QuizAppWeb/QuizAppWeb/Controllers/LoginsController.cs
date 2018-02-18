@@ -5,7 +5,6 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
@@ -77,14 +76,20 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        //         [ResponseType(typeof(LoginResponse))]
         // POST: api/Logins
         [HttpPost]
-        [ResponseType(typeof(LoginResponse))]
-        public IHttpActionResult PostLogin([FromBody]UserValidate userValidate)
+        [Route("api/Logins")]
+        public LoginResponse PostLogin([FromBody] UserValidate userValidate)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new MTException
+                {
+                    Code = "666",
+                    Name = "INVALID_USER",
+                    Value = "Usuario o contrasenia incorrecta"
+                };
             }
             Console.WriteLine("User validate: " + userValidate.Password + "-" + userValidate.Username);
             Login login = new Login();
@@ -97,11 +102,13 @@ namespace QuizAppWeb.Controllers
             
             if(listUser.Count != 1)
             {
-                throw new MTException {
+                MTException mtx = new MTException
+                {
                     Code = "666",
                     Name = "INVALID_USER",
                     Value = "Usuario o contrasenia incorrecta"
                 };
+                throw mtx;
             }
             listUser.ForEach(delegate (User user)
             {
@@ -117,7 +124,7 @@ namespace QuizAppWeb.Controllers
             //db.Logins.Add(login);
             //db.SaveChanges();
             // return CreatedAtRoute("DefaultApi", new { id = login.LoginId }, login);
-            return Ok(response);
+            return response;
         }
 
         // Validate user
