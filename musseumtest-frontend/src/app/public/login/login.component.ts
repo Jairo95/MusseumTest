@@ -46,11 +46,7 @@ export class LoginComponent implements OnInit {
             this.errors = 'User or Password Wrong!';
             console.log('[MESSAGE]: No logged');
           }
-        },
-        (error) => {
-          console.error('[ERROR]: ', error);
-        },
-        () => {}
+        }
       );
   }
 
