@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
+using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
@@ -17,22 +18,26 @@ namespace QuizAppWeb.Controllers
         private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Classrooms
-        public IQueryable<Classroom> GetClassrooms()
+        public List<ViewClassroom> GetClassrooms()
         {
-            return db.Classroom;
+            List<ViewClassroom> listClasroom = new List<ViewClassroom>();
+            db.Classroom.ToList<Classroom>().ForEach(delegate (Classroom classroom)
+            {
+                listClasroom.Add(classroom);
+            });
+            return listClasroom;
         }
 
         // GET: api/Classrooms/5
-        [ResponseType(typeof(Classroom))]
-        public IHttpActionResult GetClassroom(int id)
+        public ViewClassroom GetClassroom(int id)
         {
-            Classroom classroom = db.Classroom.Find(id);
+            ViewClassroom classroom = db.Classroom.Find(id);
             if (classroom == null)
             {
-                return NotFound();
+                throw new Exception("No encontrado");
             }
 
-            return Ok(classroom);
+            return classroom;
         }
 
         // PUT: api/Classrooms/5

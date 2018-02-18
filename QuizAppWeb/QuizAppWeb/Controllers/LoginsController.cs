@@ -79,7 +79,7 @@ namespace QuizAppWeb.Controllers
         //         [ResponseType(typeof(LoginResponse))]
         // POST: api/Login
         [HttpPost]
-        [Route("api/Login")]
+        [Route("api/Logins")]
         public LoginResponse PostLogin([FromBody] UserValidate userValidate)
         {
             if (!ModelState.IsValid)

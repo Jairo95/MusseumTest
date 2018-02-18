@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {RolService} from '../../shared-services/rol/rol.service';
+import {SessionService} from '../../shared-services/session/session.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,10 +11,12 @@ import {RolService} from '../../shared-services/rol/rol.service';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private rolService: RolService
+    private rolService: RolService,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {
     this.rolService.getRols();
+    this.sessionService.getSession();
   }
 }

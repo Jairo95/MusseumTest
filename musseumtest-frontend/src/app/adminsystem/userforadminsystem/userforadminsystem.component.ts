@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import {Person} from '../../models/api';
 
+
 @Component({
   selector: 'app-userforadminsystem',
   templateUrl: './userforadminsystem.component.html',
@@ -9,27 +10,16 @@ import {Person} from '../../models/api';
 })
 export class UserforadminsystemComponent implements OnInit {
 
-  isModeList: boolean;
-  isForPeople: string;
-  person: Person;
-
+  rolToShow: number;
+  header: string;
   constructor() {
-    this.isModeList = true;
+
   }
 
   ngOnInit() {
+    this.rolToShow = 1;
+    this.header = 'Usuarios/Estudiantes';
   }
 
-  onPersonSelected(
-    event: {person: Person}
-  ) {
-    console.log('[EVENT]: ', event.person);
-    this.person = event.person
-    this.isForPeople = 'view';
-    this.isModeList = false;
-  }
 
-  createUser(){
-    this.isForPeople = 'new';
-  }
 }

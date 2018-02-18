@@ -3,36 +3,37 @@
 
     <p-card>
       <strong>Datos de Persona</strong>
+      <br><br>
       <div class="ui-grid-row">
         <div class="ui-g-6">
           <span class="ui-float-label">
-            <input id="name" type="text" size="30" pInputText [(ngModel)]="person.Name" required>
+            <input id="name" type="text" size="30" pInputText [(ngModel)]="person.Name" required [disabled]="isPersonDisabled" >
             <label for="name">Nombre</label>
           </span>
         </div>
         <div class="ui-g-6">
           <span class="ui-float-label">
-            <input id="lastName" type="text" size="30" pInputText [(ngModel)]="person.LastName">
+            <input id="lastName" type="text" size="30" pInputText [(ngModel)]="person.LastName" [disabled]="isPersonDisabled">
             <label for="lastName">Apellido</label>
           </span>
         </div>
         <br>
         <div class="ui-g-6">
           <span class="ui-float-label">
-            <input id="email" type="text" size="30" pInputText [(ngModel)]="person.Email">
+            <input id="email" type="text" size="30" pInputText [(ngModel)]="person.Email" [disabled]="isPersonDisabled">
             <label for="email">Correo</label>
           </span>
         </div>
         <div class="ui-g-6">
           <span class="ui-float-label">
-            <input id="identity" type="text" size="30" pInputText [(ngModel)]="person.Identity" required>
+            <input id="identity" type="text" size="30" pInputText [(ngModel)]="person.Identity" required [disabled]="isPersonDisabled">
             <label for="identity">Cedula</label>
           </span>
         </div>
         <br>
         <div class="ui-g-6">
           <span class="ui-float-label">
-            <input id="phone" type="text" size="30" pInputText [(ngModel)]="person.Phone">
+            <input id="phone" type="text" size="30" pInputText [(ngModel)]="person.Phone" [disabled]="isPersonDisabled">
             <label for="phone">Telefono</label>
           </span>
         </div>
@@ -41,27 +42,33 @@
   </p-tabPanel>
   <p-tabPanel header="Usuarios">
     <strong>Datos de usuario</strong>
+    <br><br>
     <div class="ui-grid-row">
       <div class="ui-g-6">
         <span class="ui-float-label">
-          <input id="username" type="text" size="30" pInputText>
+          <input id="username" type="text" size="30" pInputText [(ngModel)]="user.Username" required [disabled]="isUserDisabled">
           <label for="username">Nombre de usuario</label>
         </span>
       </div>
       <div class="ui-g-6">
-        <p-dropdown [options]="classrooms" [(ngModel)]="selectedClassroom"
+        <p-dropdown [options]="classrooms" [(ngModel)]="selectedClassroom" [disabled]="isUserDisabled"
                     placeholder="Seleccione una clase"
+                    [style]="{'width':'100%'}"
+                    (onChange)="onClassroomChange($event)"
         ></p-dropdown>
       </div>
       <br>
       <div class="ui-g-6">
         <span class="ui-float-label">
-          <input id="password" type="text" size="30" pInputText>
+          <input id="password" type="text" size="30" pInputText
+                 [disabled]="!withPassword || isUserDisabled"
+                [(ngModel)]="user.Password"
+          >
           <label for="password">Contraseña</label>
         </span>
       </div>
       <div class="ui-g-6">
-        <strong>Rol: {{rol}}</strong>
+        <strong>Rol: </strong>{{rolUser.Description}}
       </div>
     </div>
   </p-tabPanel>
@@ -69,5 +76,5 @@
 
 <p-footer>
   <button pButton type="button" (click)="back()" label="Regresar" class="ui-button-danger"></button>
-  <button pButton type="button" (click)="save()" label="Guardar"></button>
+  <button pButton type="button" (click)="save()" label="Guardar" *ngIf="!isPersonDisabled && !isUserDisabled"></button>
 </p-footer>

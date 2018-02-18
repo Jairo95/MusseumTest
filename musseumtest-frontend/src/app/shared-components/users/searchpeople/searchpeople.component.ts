@@ -29,9 +29,8 @@ export class SearchpeopleComponent implements OnInit {
   }
 
   getPeople(){
-    this.personService.getPeople(
-      this.rol,
-      1
+    this.personService.getPeopleByRolId(
+      this.rol
     ).subscribe(
       res => {
         console.log('[RESPONSE]: ', res);
