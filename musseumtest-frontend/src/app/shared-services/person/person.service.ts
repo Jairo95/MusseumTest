@@ -13,7 +13,7 @@ export class PersonService {
     url: string;
 
   constructor(
-    private env: EnviromentService,
+  private env: EnviromentService,
     private http: HttpClient,
     private req: RequestService
   ) {

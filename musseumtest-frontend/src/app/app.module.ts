@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-
 
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guard/auth.guard';
@@ -12,6 +11,8 @@ import { UserRolGuard } from './guard/userrol.guard';
 import { TeacherRolGuard } from './guard/teacherrol.guard';
 import { AdminContentRolGuard } from './guard/admincontentrol.guard';
 import { AdminSystemRolGuard } from './guard/adminsystemrol.guard';
+
+import {MterrorhandlerService} from './shared-services/errorhandler/mterrorhandler.service';
 
 import { AppRoutingModule } from './app.routing';
 import { PublicModule } from './public/public.module';
@@ -30,6 +31,8 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import {DataTableModule} from 'primeng/datatable';
+import {GrowlModule} from 'primeng/growl';
+
 
 
 @NgModule({
@@ -58,10 +61,15 @@ import {DataTableModule} from 'primeng/datatable';
     SplitButtonModule,
     DropdownModule,
     InputTextModule,
-    DataTableModule
+    DataTableModule,
+    GrowlModule
 
   ],
   providers: [
+    {
+      provide: ErrorHandler,
+      useClass: MterrorhandlerService
+    },
     AuthGuard,
     UserRolGuard,
     TeacherRolGuard,

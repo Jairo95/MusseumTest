@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {RolService} from '../../shared-services/rol/rol.service';
 import {SessionService} from '../../shared-services/session/session.service';
 
+import {MessageService} from 'primeng/components/common/messageservice';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,7 +14,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private rolService: RolService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {

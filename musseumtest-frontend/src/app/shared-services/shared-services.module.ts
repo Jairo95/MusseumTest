@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {MessageService} from 'primeng/components/common/messageservice';
+
 import {PersonService} from './person/person.service';
 import {EnviromentService} from './enviroment/enviroment.service';
 import {ClassroomService} from './classroom/classroom.service';
@@ -21,7 +23,8 @@ import {RequestService} from './util/request.service';
     ClassroomService,
     UserService,
     SessionService,
-    RequestService
+    RequestService,
+    MessageService
   ]
 })
 export class SharedServicesModule { }
