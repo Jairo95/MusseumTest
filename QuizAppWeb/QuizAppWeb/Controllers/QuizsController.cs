@@ -16,17 +16,17 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Quizs
+        // GET: api/Quiz
         public IQueryable<Quiz> GetQuizs()
         {
-            return db.Quizs;
+            return db.Quiz;
         }
 
-        // GET: api/Quizs/5
+        // GET: api/Quiz/5
         [ResponseType(typeof(Quiz))]
         public IHttpActionResult GetQuiz(int id)
         {
-            Quiz quiz = db.Quizs.Find(id);
+            Quiz quiz = db.Quiz.Find(id);
             if (quiz == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace QuizAppWeb.Controllers
             return Ok(quiz);
         }
 
-        // PUT: api/Quizs/5
+        // PUT: api/Quiz/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutQuiz(int id, Quiz quiz)
         {
@@ -70,7 +70,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Quizs
+        // POST: api/Quiz
         [ResponseType(typeof(Quiz))]
         public IHttpActionResult PostQuiz(Quiz quiz)
         {
@@ -79,23 +79,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Quizs.Add(quiz);
+            db.Quiz.Add(quiz);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = quiz.QuizId }, quiz);
         }
 
-        // DELETE: api/Quizs/5
+        // DELETE: api/Quiz/5
         [ResponseType(typeof(Quiz))]
         public IHttpActionResult DeleteQuiz(int id)
         {
-            Quiz quiz = db.Quizs.Find(id);
+            Quiz quiz = db.Quiz.Find(id);
             if (quiz == null)
             {
                 return NotFound();
             }
 
-            db.Quizs.Remove(quiz);
+            db.Quiz.Remove(quiz);
             db.SaveChanges();
 
             return Ok(quiz);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool QuizExists(int id)
         {
-            return db.Quizs.Count(e => e.QuizId == id) > 0;
+            return db.Quiz.Count(e => e.QuizId == id) > 0;
         }
     }
 }

@@ -1,6 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
+import {ClassroomService} from '../../../shared-services/classroom/classroom.service';
 import {Person} from '../../../models/api';
+import {Classroom} from '../../../models/classroom';
 
 @Component({
   selector: 'app-people',
@@ -17,7 +19,9 @@ export class PeopleComponent implements OnInit {
   selectedClassroom: any;
   classrooms: any[];
 
-  constructor() { }
+  constructor(
+    private classroomService: ClassroomService
+  ) { }
 
   ngOnInit() {
     this.getClassrooms(1, 'adminsystem');
@@ -36,8 +40,16 @@ export class PeopleComponent implements OnInit {
     rol: string
   ){
     this.classrooms = [
-      {label: 'Selecciones clase', code: '0'}
+      {label: 'Seleccionar clase', code: '0'}
     ];
+    this.classroomService.getClassrooms(user, rol)
+      .subscribe(
+        res => {
+          res.map( classroom => {
+            this.classrooms.push({label: classroom.Name, code: classroom})
+          });
+        }
+      )
   }
 
 }

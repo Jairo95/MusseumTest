@@ -17,11 +17,11 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/People
+        // GET: api/Person
         public List<ViewPerson> GetPeople()
         {
             List<ViewPerson> listViewPerson = new List<ViewPerson>();
-            db.People.ToList<Person>().ForEach(delegate (Person person)
+            db.Person.ToList<Person>().ForEach(delegate (Person person)
             {
                 listViewPerson.Add(person);
             });
@@ -29,10 +29,10 @@ namespace QuizAppWeb.Controllers
             return listViewPerson;
         }
 
-        // GET: api/People/5
+        // GET: api/Person/5
         public ViewPerson GetPerson(int id)
         {
-            ViewPerson person = db.People.Find(id);
+            ViewPerson person = db.Person.Find(id);
             if (person == null)
             {
                 Exception ex = new Exception("Persona no encontrada");
@@ -42,7 +42,7 @@ namespace QuizAppWeb.Controllers
             return person;
         }
 
-        // PUT: api/People/5
+        // PUT: api/Person/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPerson(int id, Person person)
         {
@@ -77,7 +77,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/People
+        // POST: api/Person
         [HttpPost]
         public ViewPerson PostPerson(Person person)
         {
@@ -85,23 +85,23 @@ namespace QuizAppWeb.Controllers
             {
                 throw new Exception("No valido");
             }
-            db.People.Add(person);
+            db.Person.Add(person);
             db.SaveChanges();
             ViewPerson viewPerson = person;
             return viewPerson;
         }
 
-        // DELETE: api/People/5
+        // DELETE: api/Person/5
         [ResponseType(typeof(Person))]
         public IHttpActionResult DeletePerson(int id)
         {
-            Person person = db.People.Find(id);
+            Person person = db.Person.Find(id);
             if (person == null)
             {
                 return NotFound();
             }
 
-            db.People.Remove(person);
+            db.Person.Remove(person);
             db.SaveChanges();
 
             return Ok(person);
@@ -118,7 +118,7 @@ namespace QuizAppWeb.Controllers
 
         private bool PersonExists(int id)
         {
-            return db.People.Count(e => e.PersonId == id) > 0;
+            return db.Person.Count(e => e.PersonId == id) > 0;
         }
     }
 }

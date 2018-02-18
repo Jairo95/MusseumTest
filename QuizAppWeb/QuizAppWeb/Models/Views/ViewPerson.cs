@@ -9,6 +9,7 @@ namespace QuizAppWeb.Models.Views
     {
         public int PersonId { get; set; }
         public string Name { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
         public string Identity { get; set; }
         public string Phone { get; set; }
@@ -19,6 +20,7 @@ namespace QuizAppWeb.Models.Views
             {
                 PersonId = person.PersonId,
                 Name = person.Name,
+                LastName = person.LastName,
                 Email = person.Email,
                 Identity = person.Identity,
                 Phone = person.Phone
@@ -31,6 +33,7 @@ namespace QuizAppWeb.Models.Views
             {
                 PersonId = viewPerson.PersonId,
                 Name = viewPerson.Name,
+                LastName = viewPerson.LastName,
                 Email = viewPerson.Email,
                 Identity = viewPerson.Identity,
                 Phone = viewPerson.Phone

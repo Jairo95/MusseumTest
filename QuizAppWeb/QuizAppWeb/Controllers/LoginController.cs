@@ -21,7 +21,7 @@ namespace QuizAppWeb.Controllers
             Console.WriteLine("User validate: " + userValidate.Password + "-" + userValidate.Username);
             Login login = new Login();
             LoginResponse response = new LoginResponse();
-            IQueryable<User> userFound = db.Users.Where(
+            IQueryable<User> userFound = db.User.Where(
                 user =>
                 (user.Username == userValidate.Username) && (user.Password == userValidate.Password)
                 );
@@ -38,7 +38,7 @@ namespace QuizAppWeb.Controllers
             listUser.ForEach(delegate (User user)
             {
                 response.Error = "0";
-                response.Rol = db.Rols.Find(user.RolId).Name;
+                response.Rol = db.Rol.Find(user.RolId).Name;
                 response.Status = "ok";
             });
             return Ok(response);

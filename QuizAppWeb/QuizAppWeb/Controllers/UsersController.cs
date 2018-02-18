@@ -17,12 +17,12 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Users
+        // GET: api/User
         public List<ViewUser> GetUsers()
         {
 
             List<ViewUser> listViewUser = new List<ViewUser>();
-            db.Users.ToList<User>().ForEach(delegate (User user)
+            db.User.ToList<User>().ForEach(delegate (User user)
             {
                 listViewUser.Add(user);
             });
@@ -30,10 +30,10 @@ namespace QuizAppWeb.Controllers
             return listViewUser;
         }
 
-        // GET: api/Users/5
+        // GET: api/User/5
         public ViewUser GetUser(int id)
         {
-            ViewUser user = db.Users.Find(id);
+            ViewUser user = db.User.Find(id);
             if (user == null)
             {
                 throw new Exception("Usuario no encontrado");
@@ -42,7 +42,7 @@ namespace QuizAppWeb.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/User/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
         {
@@ -77,7 +77,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Users
+        // POST: api/User
         [HttpPost]
         public ViewUser PostUser(User user)
         {
@@ -86,7 +86,7 @@ namespace QuizAppWeb.Controllers
                 throw new Exception("No valido");
             }
 
-            db.Users.Add(user);
+            db.User.Add(user);
             db.SaveChanges();
 
             ViewUser viewUser = user;
@@ -94,17 +94,17 @@ namespace QuizAppWeb.Controllers
             return viewUser;
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/User/5
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(int id)
         {
-            User user = db.Users.Find(id);
+            User user = db.User.Find(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            db.Users.Remove(user);
+            db.User.Remove(user);
             db.SaveChanges();
 
             return Ok(user);
@@ -121,7 +121,7 @@ namespace QuizAppWeb.Controllers
 
         private bool UserExists(int id)
         {
-            return db.Users.Count(e => e.UserId == id) > 0;
+            return db.User.Count(e => e.UserId == id) > 0;
         }
     }
 }

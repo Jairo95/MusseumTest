@@ -17,22 +17,22 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Logins
+        // GET: api/Login
         public List<ViewLogin> GetLogins()
         {
             List<ViewLogin> listLogin = new List<ViewLogin>();
-            db.Logins.ToList<Login>().ForEach(delegate (Login login)
+            db.Login.ToList<Login>().ForEach(delegate (Login login)
             {
                 listLogin.Add(login);
             });
             return listLogin;
         }
 
-        // GET: api/Logins/5
+        // GET: api/Login/5
         [ResponseType(typeof(Login))]
         public IHttpActionResult GetLogin(int id)
         {
-            Login login = db.Logins.Find(id);
+            Login login = db.Login.Find(id);
             if (login == null)
             {
                 return NotFound();
@@ -41,7 +41,7 @@ namespace QuizAppWeb.Controllers
             return Ok(login);
         }
 
-        // PUT: api/Logins/5
+        // PUT: api/Login/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutLogin(int id, Login login)
         {
@@ -77,9 +77,9 @@ namespace QuizAppWeb.Controllers
         }
 
         //         [ResponseType(typeof(LoginResponse))]
-        // POST: api/Logins
+        // POST: api/Login
         [HttpPost]
-        [Route("api/Logins")]
+        [Route("api/Login")]
         public LoginResponse PostLogin([FromBody] UserValidate userValidate)
         {
             if (!ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace QuizAppWeb.Controllers
             Console.WriteLine("User validate: " + userValidate.Password + "-" + userValidate.Username);
             Login login = new Login();
             LoginResponse response = new LoginResponse();
-            IQueryable<User> userFound = db.Users.Where(
+            IQueryable<User> userFound = db.User.Where(
                 user =>
                 (user.Username == userValidate.Username) && (user.Password == userValidate.Password)
                 );
@@ -113,16 +113,18 @@ namespace QuizAppWeb.Controllers
             listUser.ForEach(delegate (User user)
             {
                 response.Error = "0";
-                response.Rol = db.Rols.Find(user.RolId).Name;
+                response.Rol = db.Rol.Find(user.RolId).Name;
                 response.Status = "ok";
+                response.UserId = user.UserId;
+                response.Username = user.Username;
                 login.UserId = user.UserId;
                 login.Status = "ok";
-                login.Rol = db.Rols.Find(user.RolId).Name;
+                login.Rol = db.Rol.Find(user.RolId).Name;
                 login.TimeOut = 360;
             });
             
-            //db.Logins.Add(login);
-            //db.SaveChanges();
+            // db.Login.Add(login);
+            // db.SaveChanges();
             // return CreatedAtRoute("DefaultApi", new { id = login.LoginId }, login);
             return response;
         }
@@ -134,17 +136,17 @@ namespace QuizAppWeb.Controllers
             return null;
         }
 
-        // DELETE: api/Logins/5
+        // DELETE: api/Login/5
         [ResponseType(typeof(Login))]
         public IHttpActionResult DeleteLogin(int id)
         {
-            Login login = db.Logins.Find(id);
+            Login login = db.Login.Find(id);
             if (login == null)
             {
                 return NotFound();
             }
 
-            db.Logins.Remove(login);
+            db.Login.Remove(login);
             db.SaveChanges();
 
             return Ok(login);
@@ -161,7 +163,7 @@ namespace QuizAppWeb.Controllers
 
         private bool LoginExists(int id)
         {
-            return db.Logins.Count(e => e.LoginId == id) > 0;
+            return db.Login.Count(e => e.LoginId == id) > 0;
         }
     }
 }

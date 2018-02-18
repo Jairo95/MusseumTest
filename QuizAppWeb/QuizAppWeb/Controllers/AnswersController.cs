@@ -16,17 +16,17 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Answers
+        // GET: api/Answer
         public IQueryable<Answer> GetAnswers()
         {
-            return db.Answers;
+            return db.Answer;
         }
 
-        // GET: api/Answers/5
+        // GET: api/Answer/5
         [ResponseType(typeof(Answer))]
         public IHttpActionResult GetAnswer(int id)
         {
-            Answer answer = db.Answers.Find(id);
+            Answer answer = db.Answer.Find(id);
             if (answer == null)
             {
                 return NotFound();
@@ -35,7 +35,7 @@ namespace QuizAppWeb.Controllers
             return Ok(answer);
         }
 
-        // PUT: api/Answers/5
+        // PUT: api/Answer/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAnswer(int id, Answer answer)
         {
@@ -70,7 +70,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Answers
+        // POST: api/Answer
         [ResponseType(typeof(Answer))]
         public IHttpActionResult PostAnswer(Answer answer)
         {
@@ -79,23 +79,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Answers.Add(answer);
+            db.Answer.Add(answer);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = answer.AnswerId }, answer);
         }
 
-        // DELETE: api/Answers/5
+        // DELETE: api/Answer/5
         [ResponseType(typeof(Answer))]
         public IHttpActionResult DeleteAnswer(int id)
         {
-            Answer answer = db.Answers.Find(id);
+            Answer answer = db.Answer.Find(id);
             if (answer == null)
             {
                 return NotFound();
             }
 
-            db.Answers.Remove(answer);
+            db.Answer.Remove(answer);
             db.SaveChanges();
 
             return Ok(answer);
@@ -112,7 +112,7 @@ namespace QuizAppWeb.Controllers
 
         private bool AnswerExists(int id)
         {
-            return db.Answers.Count(e => e.AnswerId == id) > 0;
+            return db.Answer.Count(e => e.AnswerId == id) > 0;
         }
     }
 }

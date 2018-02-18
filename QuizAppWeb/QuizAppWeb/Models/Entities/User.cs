@@ -15,6 +15,7 @@ namespace QuizAppWeb.Models
         public int RolId { get; set; }
 
         public virtual Person Person { get; set; }
+        public virtual Rol Rol { get; set; }
 
         public virtual ICollection<Record> Records { get; set; }
         public virtual ICollection<Login> Logins { get; set; }

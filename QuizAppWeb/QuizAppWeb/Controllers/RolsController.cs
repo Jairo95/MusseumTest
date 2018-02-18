@@ -17,22 +17,22 @@ namespace QuizAppWeb.Controllers
     {
         private MusseumTestContext db = new MusseumTestContext();
 
-        // GET: api/Rols
+        // GET: api/Rol
         public List<ViewRol> GetRols()
         {
             List<ViewRol> listRol = new List<ViewRol>();
-            db.Rols.ToList<Rol>().ForEach(delegate (Rol rol)
+            db.Rol.ToList<Rol>().ForEach(delegate (Rol rol)
             {
                 listRol.Add(rol);
             });
             return listRol;
         }
 
-        // GET: api/Rols/5
+        // GET: api/Rol/5
         [ResponseType(typeof(Rol))]
         public IHttpActionResult GetRol(int id)
         {
-            Rol rol = db.Rols.Find(id);
+            Rol rol = db.Rol.Find(id);
             if (rol == null)
             {
                 return NotFound();
@@ -41,7 +41,7 @@ namespace QuizAppWeb.Controllers
             return Ok(rol);
         }
 
-        // PUT: api/Rols/5
+        // PUT: api/Rol/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRol(int id, Rol rol)
         {
@@ -76,7 +76,7 @@ namespace QuizAppWeb.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Rols
+        // POST: api/Rol
         [ResponseType(typeof(Rol))]
         public IHttpActionResult PostRol(Rol rol)
         {
@@ -85,23 +85,23 @@ namespace QuizAppWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Rols.Add(rol);
+            db.Rol.Add(rol);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = rol.RolId }, rol);
         }
 
-        // DELETE: api/Rols/5
+        // DELETE: api/Rol/5
         [ResponseType(typeof(Rol))]
         public IHttpActionResult DeleteRol(int id)
         {
-            Rol rol = db.Rols.Find(id);
+            Rol rol = db.Rol.Find(id);
             if (rol == null)
             {
                 return NotFound();
             }
 
-            db.Rols.Remove(rol);
+            db.Rol.Remove(rol);
             db.SaveChanges();
 
             return Ok(rol);
@@ -118,7 +118,7 @@ namespace QuizAppWeb.Controllers
 
         private bool RolExists(int id)
         {
-            return db.Rols.Count(e => e.RolId == id) > 0;
+            return db.Rol.Count(e => e.RolId == id) > 0;
         }
     }
 }
