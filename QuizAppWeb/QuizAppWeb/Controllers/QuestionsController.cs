@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
+using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
@@ -17,9 +18,15 @@ namespace QuizAppWeb.Controllers
         private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Question
-        public IQueryable<Question> GetQuestions()
+        public List<ViewQuestion> GetQuestion()
         {
-            return db.Question;
+            List<ViewQuestion> listViewQuestion = new List<ViewQuestion>();
+            db.Question.ToList<Question>().ForEach(delegate (Question question)
+            {
+                listViewQuestion.Add(question);
+            });
+
+            return listViewQuestion;
         }
 
         // GET: api/Question/5
