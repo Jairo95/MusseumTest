@@ -215,6 +215,7 @@
     <Compile Include="Models\Views\ViewClassroom.cs" />
     <Compile Include="Models\Views\ViewLogin.cs" />
     <Compile Include="Models\Views\ViewPerson.cs" />
+    <Compile Include="Models\Views\ViewQuestion.cs" />
     <Compile Include="Models\Views\ViewRol.cs" />
     <Compile Include="Models\Views\ViewUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
