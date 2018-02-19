@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {Routes, RouterModule} from '@angular/router';
 import { UserComponent } from './user/user.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: UserComponent},
@@ -13,7 +14,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule,
+
   ],
   declarations: [UserComponent]
 })

@@ -1,3 +1,17 @@
-<p>
-  user works!
-</p>
+<h1 class="text-center">Cuestionario</h1>
+
+<div class="row" >
+  <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 1cm; padding-top: 1cm" *ngFor="let question of questions">
+    <div class="row">
+      <div class="col-sm-5 text-center">
+        <h3>{{question.description}}</h3>
+      </div>
+
+      <div class="col-sm-7 text-center">
+        <p> Pregunta: {{question.Observation}} </p>
+        <p> tipo: {{question.CategoryId}}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
