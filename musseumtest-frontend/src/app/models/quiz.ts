@@ -2,7 +2,6 @@ export class Quiz {
   QuizId: number;
   Description: string;
   Observation: string;
-  CategoryId: number;
   LevelId: number;
   UserCreate: number;
   Scope: number;
