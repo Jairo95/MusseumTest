@@ -197,6 +197,7 @@
     <Compile Include="Models\Entities\Answer.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\Classroom.cs" />
+    <Compile Include="Models\Entities\Enrollment.cs" />
     <Compile Include="Models\Entities\Level.cs" />
     <Compile Include="Models\Entities\LogAnswer.cs" />
     <Compile Include="Models\Entities\Login.cs" />

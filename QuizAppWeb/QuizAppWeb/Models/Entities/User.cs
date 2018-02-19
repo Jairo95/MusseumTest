@@ -19,6 +19,7 @@ namespace QuizAppWeb.Models
 
         public virtual ICollection<Record> Records { get; set; }
         public virtual ICollection<Login> Logins { get; set; }
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
 
     }
 

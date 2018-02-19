@@ -17,7 +17,6 @@ namespace QuizAppWeb.Models.Views
         public DateTime DateLogout { get; set; }
 
         public int UserId { get; set; }
-        public int ClassroomId { get; set; }
 
         public static implicit operator ViewLogin(Login login)
         {
@@ -29,8 +28,7 @@ namespace QuizAppWeb.Models.Views
                 TimeOut = login.TimeOut,
                 DateLogin = login.DateLogin,
                 DateLogout = login.DateLogout,
-                UserId = login.UserId,
-                ClassroomId = login.ClassroomId
+                UserId = login.UserId
             };
         }
 
@@ -44,8 +42,7 @@ namespace QuizAppWeb.Models.Views
                 TimeOut = viewLogin.TimeOut,
                 DateLogin = viewLogin.DateLogin,
                 DateLogout = viewLogin.DateLogout,
-                UserId = viewLogin.UserId,
-                ClassroomId = viewLogin.ClassroomId
+                UserId = viewLogin.UserId
             };
         }
 

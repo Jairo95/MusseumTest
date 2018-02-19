@@ -14,6 +14,9 @@ namespace QuizAppWeb.Models
         public string JsonAnswer { get; set; }
         public DateTime DateCreate { get; set; }
 
-        public virtual ICollection<Record> Records { get; set; }
+
+        public int RecordId { get; set; }
+
+        public virtual Record Record { get; set; }
     }
 }
