@@ -12,6 +12,6 @@ namespace QuizAppWeb.Models
         public string Description { get; set; }
         public string Observation { get; set; }
 
-        public virtual ICollection<Quiz> Quizzes { get; set; }
+        public virtual ICollection<Question> Questions { get; set; }
     }
 }
