@@ -15,10 +15,8 @@ namespace QuizAppWeb.Models
         public DateTime DateLogout { get; set; }
 
         public int UserId { get; set; }
-        public int ClassroomId { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Classroom Classroom { get; set; }
 
 
     }

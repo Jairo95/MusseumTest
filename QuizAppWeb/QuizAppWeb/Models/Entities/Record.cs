@@ -13,11 +13,11 @@ namespace QuizAppWeb.Models
         public double Grade { get; set; }
 
         public int UserId { get; set; }
-        public int LogAnswerId { get; set; }
         public int QuizId { get; set; }
 
-        public virtual LogAnswer LogAnswer { get; set; }
         public virtual User User { get; set; }
         public virtual Quiz Quiz { get; set; }
+
+        public virtual ICollection<LogAnswer> LogAnswers { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace QuizAppWeb.Models
         
         public int LevelId { get; set; }
 
-        public int UserCreate { get; set; }
+        public int ClassroomOwner { get; set; }
         public int Scope { get; set; }
 
         

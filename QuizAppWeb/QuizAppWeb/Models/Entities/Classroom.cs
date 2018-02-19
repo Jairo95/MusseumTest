@@ -15,7 +15,7 @@ namespace QuizAppWeb.Models
         public int UserCreate { get; set; }
         public int UserManager { get; set; }
 
-        public virtual ICollection<Login> Logins { get; set; }
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
 
     }
 }
