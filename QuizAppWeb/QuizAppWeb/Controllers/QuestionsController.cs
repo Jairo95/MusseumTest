@@ -78,18 +78,17 @@ namespace QuizAppWeb.Controllers
         }
 
         // POST: api/Question
-        [ResponseType(typeof(Question))]
-        public IHttpActionResult PostQuestion(Question question)
+        [HttpPost]
+        public ViewQuestion PostQuestion([FromBody]Question question)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new Exception("No valido");
             }
-
             db.Question.Add(question);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = question.QuestionId }, question);
+            ViewQuestion viewQuestion = question;
+            return viewQuestion;
         }
 
         // DELETE: api/Question/5
