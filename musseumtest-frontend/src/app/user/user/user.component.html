@@ -1,17 +1,60 @@
 <h1 class="text-center">Cuestionario</h1>
 
-<div class="row" >
-  <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 1cm; padding-top: 1cm" *ngFor="let question of questions">
+
+{{answers | json}}
+<p-card>
+  <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 0.1cm; padding-top: 0.1cm" *ngFor="let question of questions.Questions">
     <div class="row">
-      <div class="col-sm-5 text-center">
+      <div class="ui-g-2">
         <h3>{{question.description}}</h3>
       </div>
 
-      <div class="col-sm-7 text-center">
+      <div class="ui-g-2">
         <p> Pregunta: {{question.Observation}} </p>
         <p> tipo: {{question.CategoryId}}</p>
+      </div>
+      <div class="col-sm-6">
+        <div class="row" *ngIf="question.CategoryId === 1">
+          <div class="ui-g-2">
+            <label>Respuesta:</label>
+
+          </div>
+          <div class="ui-g-2">
+            <input type="text"  size="30" pInputText [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]"/>
+          </div>
+          <div class="ui-g-2">
+          </div>
+        </div>
+        <div class="row" *ngIf="question.CategoryId === 2">
+          <div class="ui-g-2">
+            <label>Respuesta:</label>
+          </div>
+          <div class="ui-g-2">
+            <div class="ui-g" style="width:250px;margin-bottom:10px">
+              <div class="ui-g-12"><p-radioButton  value="Verdadero" label="Verdadero" [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]" ></p-radioButton></div>
+              <div class="ui-g-12"><p-radioButton  value="Falso" label="Falso" [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]" ></p-radioButton></div>
+            </div>
+            <div class="ui-g-2">
+            </div>
+
+          </div>
+        </div>
 
       </div>
+
     </div>
+
+  </div>
+
+</p-card>
+<div class="ui-grid-row">
+
+  <div class="ui-g-4">
+  </div>
+  <div class="ui-g-4">
+  <button pButton type="button" (click)="sendResults()" label="Enviar Resultado " class="ui-button-success"></button>
+  </div>
+
+  <div class="ui-g-4">
   </div>
 </div>

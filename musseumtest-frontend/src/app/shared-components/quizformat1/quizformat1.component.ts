@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Quizformat1Component implements OnInit {
 
+  questionFormat1: string;
+  respFormat1: string;
   constructor() { }
 
   ngOnInit() {
