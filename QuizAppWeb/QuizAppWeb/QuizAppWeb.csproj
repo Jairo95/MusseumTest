@@ -222,6 +222,7 @@
     <Compile Include="Models\Views\ViewPerson.cs" />
     <Compile Include="Models\Views\ViewQuestion.cs" />
     <Compile Include="Models\Views\ViewQuiz.cs" />
+    <Compile Include="Models\Views\ViewRecord.cs" />
     <Compile Include="Models\Views\ViewRol.cs" />
     <Compile Include="Models\Views\ViewStatus.cs" />
     <Compile Include="Models\Views\ViewUser.cs" />
