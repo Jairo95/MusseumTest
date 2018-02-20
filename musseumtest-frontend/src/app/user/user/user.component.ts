@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Question} from '../../models/question';
+import {QuizaView} from '../../models/quizaView';
 import {UserService} from './user.service';
 import {forEach} from '@angular/router/src/utils/collection';
 
@@ -17,7 +18,7 @@ export class UserComponent implements OnInit {
   userN: String = localStorage.getItem('username');
 
   grade: number = 0;
-  questions = [];
+  questions: QuizaView = new QuizaView();
   answersCorrect = [] ;
 
   question: Question = new Question();
@@ -42,6 +43,7 @@ export class UserComponent implements OnInit {
       console.log('response: ' , this.questions);
     });
   }
+
   sendResults() {
     this.display = true;
     this.calculateGrade();
@@ -49,8 +51,8 @@ export class UserComponent implements OnInit {
     this.userService.insertRecord(5,1, this.grade/this.sizeQuestion ).subscribe(response => {
       console.log('response: ' , response);
     });
-
   }
+
   calculateGrade(){
     this.grade = 0;
     this.sizeQuestion = this.questions.Questions.length;
