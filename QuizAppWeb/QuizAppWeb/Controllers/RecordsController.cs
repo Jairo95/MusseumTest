@@ -23,6 +23,22 @@ namespace QuizAppWeb.Controllers
             return db.Record;
         }
 
+        [HttpGet]
+        [Route("api/Records/byQuiz/{QuizId}")]
+        public List<ViewRecord> GetRecordByQuizId(int QuizId)
+        {
+            List<ViewRecord> listViewRecord = new List<ViewRecord>();
+            List<Record> listRecord = (from p in db.Record
+                                       join u in db.User on p.UserId equals u.UserId
+                                       where p.QuizId == QuizId
+                                       select p).ToList<Record>();
+            listRecord.ForEach(delegate (Record record)
+            {
+                listViewRecord.Add(record);
+            });
+            return listViewRecord;
+        }
+
         // GET: api/Record/5
         [ResponseType(typeof(Record))]
         public IHttpActionResult GetRecord(int id)
