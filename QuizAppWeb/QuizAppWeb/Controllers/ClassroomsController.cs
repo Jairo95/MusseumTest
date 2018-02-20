@@ -40,6 +40,20 @@ namespace QuizAppWeb.Controllers
             return classroom;
         }
 
+        // POST: api/Classroom
+        [HttpPost]
+        public ViewClassroom PostClassroom([FromBody]Classroom classroom)
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new Exception("No valido");
+            }
+            db.Classroom.Add(classroom);
+            db.SaveChanges();
+            ViewClassroom viewClassroom = classroom;
+            return viewClassroom;
+        }
+
         // PUT: api/Classrooms/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClassroom(int id, Classroom classroom)
@@ -73,21 +87,6 @@ namespace QuizAppWeb.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Classrooms
-        [ResponseType(typeof(Classroom))]
-        public IHttpActionResult PostClassroom(Classroom classroom)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Classroom.Add(classroom);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = classroom.ClassroomId }, classroom);
         }
 
         // DELETE: api/Classrooms/5

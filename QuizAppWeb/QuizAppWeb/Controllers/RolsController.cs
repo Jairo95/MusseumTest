@@ -41,6 +41,20 @@ namespace QuizAppWeb.Controllers
             return Ok(rol);
         }
 
+        // POST: api/Rol
+        [HttpPost]
+        public ViewRol PostRol([FromBody]Rol rol)
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new Exception("No valido");
+            }
+            db.Rol.Add(rol);
+            db.SaveChanges();
+            ViewRol viewRol = rol;
+            return viewRol;
+        }
+
         // PUT: api/Rol/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRol(int id, Rol rol)
@@ -74,21 +88,6 @@ namespace QuizAppWeb.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Rol
-        [ResponseType(typeof(Rol))]
-        public IHttpActionResult PostRol(Rol rol)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Rol.Add(rol);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = rol.RolId }, rol);
         }
 
         // DELETE: api/Rol/5

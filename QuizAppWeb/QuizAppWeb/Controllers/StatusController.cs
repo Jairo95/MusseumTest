@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
+using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
@@ -17,9 +18,14 @@ namespace QuizAppWeb.Controllers
         private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Status
-        public IQueryable<Status> GetStatus()
+        public List<ViewStatus> GetStatus()
         {
-            return db.Status;
+            List<ViewStatus> listStatus = new List<ViewStatus>();
+            db.Status.ToList<Status>().ForEach(delegate (Status status)
+            {
+                listStatus.Add(status);
+            });
+            return listStatus;
         }
 
         // GET: api/Status/5
@@ -33,6 +39,19 @@ namespace QuizAppWeb.Controllers
             }
 
             return Ok(status);
+        }
+
+        // POST: api/Status
+        [HttpPost]
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new Exception("No valido");
+            }
+            db.Status.Add(status);
+            db.SaveChanges();
+            ViewStatus viewStatus = status;
+            return viewStatus;
         }
 
         // PUT: api/Status/5
@@ -68,21 +87,6 @@ namespace QuizAppWeb.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Status
-        [ResponseType(typeof(Status))]
-        public IHttpActionResult PostStatus(Status status)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Status.Add(status);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = status.StatusId }, status);
         }
 
         // DELETE: api/Status/5
