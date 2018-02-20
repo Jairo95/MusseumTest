@@ -217,11 +217,13 @@
     <Compile Include="Models\Views\ViewAnswer.cs" />
     <Compile Include="Models\Views\ViewCategory.cs" />
     <Compile Include="Models\Views\ViewClassroom.cs" />
+    <Compile Include="Models\Views\ViewLevel.cs" />
     <Compile Include="Models\Views\ViewLogin.cs" />
     <Compile Include="Models\Views\ViewPerson.cs" />
     <Compile Include="Models\Views\ViewQuestion.cs" />
     <Compile Include="Models\Views\ViewQuiz.cs" />
     <Compile Include="Models\Views\ViewRol.cs" />
+    <Compile Include="Models\Views\ViewStatus.cs" />
     <Compile Include="Models\Views\ViewUser.cs" />
     <Compile Include="Models\Views\ViewWholeQuestion.cs" />
     <Compile Include="Models\Views\ViewWholeQuiz.cs" />
