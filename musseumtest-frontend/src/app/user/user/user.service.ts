@@ -7,10 +7,13 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 import { Uservalidate } from '../../models/uservalidate';
+import {QuizaView} from '../../models/quizaView';
+
 @Injectable()
 export class UserService {
   urlBase = 'http://localhost:50446';
   constructor(   private http: HttpClient ) { }
+
   getQuestions(classromm ): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -25,7 +28,7 @@ export class UserService {
     return this.http.get(url);
   }
 
-  getQuizbyClass(classromm ): Observable<any> {
+  getQuizbyClass(classromm ): Observable<QuizaView> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded',
@@ -35,7 +38,7 @@ export class UserService {
     const url = this.urlBase + '/api/Quizs/Maped/' + classromm
     const body = new URLSearchParams();
     console.log("url" + url);
-    return this.http.get<any>(url);
+    return this.http.get<QuizaView>(url);
   }
 
   insertRecord(idQuiz, idUser, grade): Observable<any> {
