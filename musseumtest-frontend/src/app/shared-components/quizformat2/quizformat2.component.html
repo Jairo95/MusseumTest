@@ -12,7 +12,7 @@
     <label>pregunta:</label>
   </div>
   <div class="ui-g-2">
-    <input type="text" size="30" pInputText [(ngModel)]="questionFormat1"/>
+    <input type="text" size="30" pInputText [(ngModel)]="question.Description"/>
   </div>
   <div class="ui-g-2">
 
@@ -29,12 +29,14 @@
   </div>
   <div class="ui-g-2">
     <div class="ui-g" style="width:250px;margin-bottom:10px">
-      <div class="ui-g-12"><p-radioButton name="group2" value="Verdadero" label="Option 1" [(ngModel)]="val2" inputId="preopt1"></p-radioButton></div>
-      <div class="ui-g-12"><p-radioButton name="group2" value="Falso" label="Option 2" [(ngModel)]="val2" inputId="preopt2"></p-radioButton></div>
+      <div class="ui-g-12"><p-radioButton name="group2" value="Verdadero" label="Verdadero" [(ngModel)]="selectedValue" inputId="preopt1"></p-radioButton></div>
+      <div class="ui-g-12"><p-radioButton name="group2" value="Falso" label="Falso" [(ngModel)]="selectedValue" inputId="preopt2"></p-radioButton></div>
     </div>
   <div class="ui-g-2">
 
   </div>
 
 </div>
-
+  <div class="ui-g-4">
+    <button pButton type="button" (click)="save()" label="Guardar " class="ui-button-success"></button>
+  </div>

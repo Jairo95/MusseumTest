@@ -15,13 +15,14 @@ import {TableModule} from 'primeng/table';
 import {TabViewModule} from 'primeng/tabview';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
-
+import {BlockUIModule} from 'primeng/blockui';
 import { NavleftComponent } from './navleft/navleft.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchpeopleComponent } from './users/searchpeople/searchpeople.component';
 import { PeopleComponent } from './users/people/people.component';
 import { DynamicuserComponent } from './users/dynamicuser/dynamicuser.component';
+import { Quizformat5Component } from './quizformat5/quizformat5.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { DynamicuserComponent } from './users/dynamicuser/dynamicuser.component'
     CardModule,
     FieldsetModule,
     TableModule,
+    BlockUIModule,
     TabViewModule,
     ButtonModule,
     DropdownModule
@@ -50,7 +52,8 @@ import { DynamicuserComponent } from './users/dynamicuser/dynamicuser.component'
     NotFoundComponent,
     SearchpeopleComponent,
     PeopleComponent,
-    DynamicuserComponent
+    DynamicuserComponent,
+    Quizformat5Component
   ],
   exports: [
     NavtopComponent,

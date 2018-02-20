@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   sizeQuestion: number = 0;
 
   userN: String = localStorage.getItem('username');
-
+  userId: String = localStorage.getItem('userId');
   grade: number = 0;
   questions: QuizaView = new QuizaView();
   answersCorrect = [] ;
@@ -48,7 +48,8 @@ export class UserComponent implements OnInit {
     this.display = true;
     this.calculateGrade();
     let classroom = localStorage.getItem('classroom');
-    this.userService.insertRecord(5,1, this.grade/this.sizeQuestion ).subscribe(response => {
+
+    this.userService.insertRecord(5,this.userId, this.grade/this.sizeQuestion ).subscribe(response => {
       console.log('response: ' , response);
     });
   }

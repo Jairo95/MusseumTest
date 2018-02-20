@@ -3,4 +3,5 @@ export class Question {
   Description: string;
   Observation: string;
   CategoryId: number;
-}
+  QuizId: number;
+  }
