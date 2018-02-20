@@ -10,15 +10,21 @@ import {forEach} from '@angular/router/src/utils/collection';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  display: boolean = false;
   answers: {} = {};
+  sizeQuestion: number = 0;
 
+  userN: String = localStorage.getItem('username');
+
+  grade: number = 0;
   questions = [];
+  answersCorrect = [] ;
+
   question: Question = new Question();
   constructor(private userService: UserService ) { }
 
   ngOnInit() {
-   /* for ( let i = 0 ; i < 5 ; i++){
+    /* for ( let i = 0 ; i < 5 ; i++){
       let q = new Question();
     q.CategoryId = i;
     q.Description = "pregunta:"+i;
@@ -26,7 +32,7 @@ export class UserComponent implements OnInit {
     q.QuestionId = i;
     this.questions.push(q);
   }*/
-   /* this.userService.getQuestions(1).subscribe(response => {
+    /* this.userService.getQuestions(1).subscribe(response => {
       this.questions = response;
       console.log('response: ' , this.questions);
     });*/
@@ -37,14 +43,31 @@ export class UserComponent implements OnInit {
     });
   }
   sendResults() {
-    this.userService.insertRecord(5,1 ).subscribe(response => {
+    this.display = true;
+    this.calculateGrade();
+    let classroom = localStorage.getItem('classroom');
+    this.userService.insertRecord(5,1, this.grade/this.sizeQuestion ).subscribe(response => {
       console.log('response: ' , response);
     });
 
   }
   calculateGrade(){
-    for ()
-
+    this.grade = 0;
+    this.sizeQuestion = this.questions.Questions.length;
+    for(let i = 0 ; i < this.questions.Questions.length; i++)
+    {
+      this.answersCorrect = this.questions.Questions[i].Answers;
+      let quizID = this.questions.QuizId;
+      for(let j = 0 ; j < this.answersCorrect.length; j++) {
+        console.log('answers', this.answersCorrect[j]);
+        let idSearch = quizID + "-" + this.answersCorrect[j].QuestionId;
+        console.log('compare answers with', this.answers[idSearch]);
+        if (this.answersCorrect[j].Description === this.answers[idSearch]) {
+          this.grade++;
+          j = this.answersCorrect.length;
+        }
+      }
+    }
   }
 
 

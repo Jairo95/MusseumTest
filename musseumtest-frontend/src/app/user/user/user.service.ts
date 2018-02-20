@@ -38,7 +38,7 @@ export class UserService {
     return this.http.get<any>(url);
   }
 
-  insertRecord(idQuiz, idUser): Observable<any> {
+  insertRecord(idQuiz, idUser, grade): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded',
@@ -54,7 +54,7 @@ export class UserService {
     console.log("date",dateformat.trim())
     body.set('DateStart', dateformat.trim());
     body.set('DateEnd',dateformat.trim());
-    body.set('Grade', "7");
+    body.set('Grade', grade);
 
 
     return this.http.post(url, body.toString(), httpOptions );

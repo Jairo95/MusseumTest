@@ -1,7 +1,5 @@
 <h1 class="text-center">Cuestionario</h1>
 
-
-{{answers | json}}
 <p-card>
   <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 0.1cm; padding-top: 0.1cm" *ngFor="let question of questions.Questions">
     <div class="row">
@@ -45,16 +43,28 @@
     </div>
 
   </div>
+  <div class="ui-grid-row">
 
+    <div class="ui-g-4">
+    </div>
+    <div class="ui-g-4">
+      <button pButton type="button" (click)="sendResults()" label="Enviar Respuestas " class="ui-button-success"></button>
+    </div>
+
+    <div class="ui-g-4">
+    </div>
+  </div>
 </p-card>
-<div class="ui-grid-row">
 
-  <div class="ui-g-4">
-  </div>
-  <div class="ui-g-4">
-  <button pButton type="button" (click)="sendResults()" label="Enviar Resultado " class="ui-button-success"></button>
-  </div>
+<p-dialog header="Calificacion" [(visible)]="display" [width]="300">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <p> Nombre: {{userN}} </p>
+    </div>
+    <div class="ui-g-4">
+      <p> Nota: {{grade}}/{{sizeQuestion}} </p>
+    </div>
 
-  <div class="ui-g-4">
   </div>
-</div>
+</p-dialog>
+
