@@ -43,6 +43,7 @@ namespace QuizAppWeb.Controllers
 
         // POST: api/Status
         [HttpPost]
+        public ViewStatus PostStatus([FromBody]Status status)
         {
             if (!ModelState.IsValid)
             {
