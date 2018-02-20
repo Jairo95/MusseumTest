@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
+using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
@@ -17,9 +18,14 @@ namespace QuizAppWeb.Controllers
         private MusseumTestContext db = new MusseumTestContext();
 
         // GET: api/Level
-        public IQueryable<Level> GetLevels()
+        public List<ViewLevel> GetLevels()
         {
-            return db.Level;
+            List<ViewLevel> listLevel = new List<ViewLevel>();
+            db.Level.ToList<Level>().ForEach(delegate (Level level)
+            {
+                listLevel.Add(level);
+            });
+            return listLevel;
         }
 
         // GET: api/Level/5
@@ -33,6 +39,20 @@ namespace QuizAppWeb.Controllers
             }
 
             return Ok(level);
+        }
+
+        // POST: api/Level
+        [HttpPost]
+        public ViewLevel PostLevel([FromBody]Level level)
+        {
+            if (!ModelState.IsValid)
+            {
+                throw new Exception("No valido");
+            }
+            db.Level.Add(level);
+            db.SaveChanges();
+            ViewLevel viewLevel = level;
+            return viewLevel;
         }
 
         // PUT: api/Level/5
@@ -68,21 +88,6 @@ namespace QuizAppWeb.Controllers
             }
 
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Level
-        [ResponseType(typeof(Level))]
-        public IHttpActionResult PostLevel(Level level)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Level.Add(level);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = level.LevelId }, level);
         }
 
         // DELETE: api/Level/5
