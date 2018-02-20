@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using QuizAppWeb.Models;
+using QuizAppWeb.Models.Views;
 
 namespace QuizAppWeb.Controllers
 {
@@ -71,18 +72,17 @@ namespace QuizAppWeb.Controllers
         }
 
         // POST: api/Record
-        [ResponseType(typeof(Record))]
-        public IHttpActionResult PostRecord(Record record)
+        [HttpPost]
+        public ViewRecord PostRecord([FromBody]Record record)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                throw new Exception("No valido");
             }
-
             db.Record.Add(record);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = record.RecordId }, record);
+            ViewRecord viewRecord = record;
+            return viewRecord;
         }
 
         // DELETE: api/Record/5
