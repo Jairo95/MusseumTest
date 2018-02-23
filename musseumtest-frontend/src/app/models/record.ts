@@ -2,8 +2,8 @@ import {User} from './user';
 
 export class Record {
   RecordId: number;
-  DateStart: string;
-  DateEnd: string;
+  DateStart: Date;
+  DateEnd: Date;
   Grade: number;
   UserId: number;
   QuizId: number;

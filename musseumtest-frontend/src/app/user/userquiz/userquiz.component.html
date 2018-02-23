@@ -1,0 +1,56 @@
+<h1 class="text-center">Museo Gustavo Orcés V.</h1>
+<p-card>
+  <button pButton type="button" (click)="finished()"
+          label="Regresar"
+          class="ui-button-danger"
+  ></button>
+
+  <div *ngIf="error">
+    <p><strong>{{messageError}}</strong></p>
+  </div>
+  <p-accordion [activeIndex]="indexAccordion">
+    <p-accordionTab  *ngFor="let question of questions.Questions; let i =index" [disabled]="indexAccordion != i">
+      <p-header>{{i + 1}}</p-header>
+      <p-fieldset *ngIf="question.CategoryId === 3">
+        <p-header><strong> {{question.Description}} </strong></p-header>
+        <div class="ui-g">
+          <div class="ui-g-4">
+            <p style="border-bottom: 1px solid black"><strong>Respuesta: </strong> {{answers[question.QuizId + '-' + question.QuestionId]}}</p>
+            <p><strong>Ayuda:</strong> {{question.Observation}}</p>
+          </div>
+          <div class="ui-g-8 ui-g-nopad" style="background: aliceblue">
+            <div class="ui-g-12" *ngFor="let answerView of question.Answers"  style="border: 1px solid white">
+              <p-radioButton  value={{answerView.Description}} label={{answerView.Description}} [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]" ></p-radioButton>
+            </div>
+          </div>
+        </div>
+      </p-fieldset>
+      <button pButton type="button" (click)="nextQuestion()" label="Siguiente"></button>
+    </p-accordionTab>
+  </p-accordion>
+  <p-footer >
+    <div style="text-align: center; width: 30%; margin-left: auto; margin-right: auto">
+      <button pButton type="button" (click)="sendResults()"
+              label="Enviar Respuestas "
+              class="ui-button-success"
+      ></button>
+    </div>
+  </p-footer>
+
+</p-card>
+
+<p-dialog header="Calificacion" [(visible)]="display" [width]="300">
+  <div class="ui-g">
+    <div class="ui-g-8">
+      <p> Nombre: {{userN}} </p>
+    </div>
+    <div class="ui-g-4">
+      <p> Nota: {{grade}}/{{sizeQuestion}} </p>
+    </div>
+
+    <button pButton type="button" (click)="finished()"
+            label="Continuar"
+            class="ui-button-success"
+    ></button>
+  </div>
+</p-dialog>

@@ -226,6 +226,7 @@
     <Compile Include="Models\Views\ViewRol.cs" />
     <Compile Include="Models\Views\ViewStatus.cs" />
     <Compile Include="Models\Views\ViewUser.cs" />
+    <Compile Include="Models\Views\ViewWholeAnswer.cs" />
     <Compile Include="Models\Views\ViewWholeQuestion.cs" />
     <Compile Include="Models\Views\ViewWholeQuiz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

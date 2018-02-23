@@ -4,6 +4,10 @@ import {Question} from '../../models/question';
 import {QuizaView} from '../../models/quizaView';
 import {UserService} from './user.service';
 import {forEach} from '@angular/router/src/utils/collection';
+import {Answer} from '../../models/answer';
+import {Classroom} from '../../models/classroom';
+import {SessionService} from '../../shared-services/session/session.service';
+import {ClassroomService} from '../../shared-services/classroom/classroom.service';
 
 @Component({
   selector: 'app-user',
@@ -11,68 +15,62 @@ import {forEach} from '@angular/router/src/utils/collection';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  display: boolean = false;
-  answers: {} = {};
-  sizeQuestion: number = 0;
 
-  userN: String = localStorage.getItem('username');
-  userId: String = localStorage.getItem('id');
-  grade: number = 0;
-  questions: QuizaView = new QuizaView();
-  answersCorrect = [] ;
 
-  question: Question = new Question();
-  constructor(private userService: UserService ) { }
+  cols: any[];
+  classrooms: Classroom[] = [];
+  selectedClassrooom: Classroom;
+  idClassroomSelected: number;
+  userSession: number;
+  rolSession: string;
+
+
+  isQuiz: boolean = false;
+
+  constructor(
+    private sessionService: SessionService,
+    private classroomService: ClassroomService
+  ) {
+    this.userSession = this.sessionService.USERID;
+    this.rolSession = this.sessionService.USER;
+
+  }
 
   ngOnInit() {
-    /* for ( let i = 0 ; i < 5 ; i++){
-      let q = new Question();
-    q.CategoryId = i;
-    q.Description = "pregunta:"+i;
-    q.Observation = "observacion:"+i;
-    q.QuestionId = i;
-    this.questions.push(q);
-  }*/
-    /* this.userService.getQuestions(1).subscribe(response => {
-      this.questions = response;
-      console.log('response: ' , this.questions);
-    });*/
-
-    this.userService.getQuizbyClass(5).subscribe(response => {
-      this.questions = response;
-      console.log('response: ' , this.questions);
-    });
+    this.getClassrooms();
+    this.defineClassroomCols();
   }
 
-  sendResults() {
-    this.display = true;
-    this.calculateGrade();
-    let classroom = localStorage.getItem('classroom');
 
-    this.userService.insertRecord(5,this.userId, this.grade/this.sizeQuestion ).subscribe(response => {
-      console.log('response: ' , response);
-    });
+
+  onClassRoomSelected() {
+    this.isQuiz = true;
+    console.log('[CLASSROOM SELECTED]: ', this.selectedClassrooom);
+    this.idClassroomSelected = this.selectedClassrooom.ClassroomId;
   }
 
-  calculateGrade(){
-    this.grade = 0;
-    this.sizeQuestion = this.questions.Questions.length;
-    for(let i = 0 ; i < this.questions.Questions.length; i++)
-    {
-      this.answersCorrect = this.questions.Questions[i].Answers;
-      let quizID = this.questions.QuizId;
-      for(let j = 0 ; j < this.answersCorrect.length; j++) {
-        console.log('answers', this.answersCorrect[j]);
-        let idSearch = quizID + "-" + this.answersCorrect[j].QuestionId;
-        console.log('compare answers with', this.answers[idSearch]);
-        if (this.answersCorrect[j].Description === this.answers[idSearch]) {
-          this.grade++;
-          j = this.answersCorrect.length;
-        }
+  onFinishedTest(
+    event: {status: boolean}
+  ){
+    this.isQuiz = false;
+    this.selectedClassrooom = null;
+  }
+
+
+  getClassrooms(){
+    this.classroomService.getClassrooms(this.userSession, this.rolSession).subscribe(
+      res => {
+        this.classrooms = res;
       }
-    }
+    );
   }
 
-
+  defineClassroomCols() {
+    this.cols = [
+      {field: 'Name', header: 'Nombre'},
+      {field: 'Description', header: 'Descripcion'},
+      {field: 'Observation', header: 'Observacion'}
+    ];
+  }
 }
 

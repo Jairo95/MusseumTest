@@ -12,11 +12,11 @@ namespace QuizAppWeb.Models.Views
         public string Observation { get; set; }
         public int QuizId { get; set; }
         public int CategoryId { get; set; }
-        public List<ViewAnswer> Answers { get; set; }
+        public List<ViewWholeAnswer> Answers { get; set; }
 
-        public static List<ViewAnswer> fromMyCollectionToList(ICollection<Answer> lista)
+        public static List<ViewWholeAnswer> fromMyCollectionToList(ICollection<Answer> lista)
         {
-            List<ViewAnswer> list = new List<ViewAnswer>();
+            List<ViewWholeAnswer> list = new List<ViewWholeAnswer>();
             lista.ToList<Answer>().ForEach(delegate (Answer answer)
             {
                 list.Add(answer);

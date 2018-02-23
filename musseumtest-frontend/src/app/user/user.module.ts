@@ -14,9 +14,13 @@ import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import { UserreportComponent } from './userreport/userreport.component';
 import {TableModule} from 'primeng/table';
+import {AccordionModule} from 'primeng/accordion';
+import {FieldsetModule} from 'primeng/fieldset';
+import { UserquizComponent } from './userquiz/userquiz.component';
+
+
 const routes: Routes = [
   {path: '', component: UserComponent},
-  {path: 'quizzes', component: UserComponent},
   {path: 'reports', component: UserreportComponent}
 ];
 
@@ -33,10 +37,12 @@ const routes: Routes = [
     DialogModule,
     CardModule,
     TableModule,
+    AccordionModule,
+    FieldsetModule,
     RouterModule.forChild(routes)
   ], providers: [
     UserService
   ],
-  declarations: [UserComponent, UserreportComponent]
+  declarations: [UserComponent, UserreportComponent, UserquizComponent]
 })
 export class UserModule { }

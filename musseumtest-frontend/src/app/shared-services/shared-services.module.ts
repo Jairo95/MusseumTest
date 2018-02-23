@@ -12,6 +12,8 @@ import {SessionService} from './session/session.service';
 import {RequestService} from './util/request.service';
     import {QuestionService} from './question/question.service';
     import {RecordService} from './record/record.service';
+    import {CategoryService} from './category/category.service';
+    import {LevelService} from './level/level.service';
 
 @NgModule({
   imports: [
@@ -28,7 +30,9 @@ import {RequestService} from './util/request.service';
     RequestService,
     MessageService,
     QuestionService,
-    RecordService
+    RecordService,
+    CategoryService,
+    LevelService
   ]
 })
 export class SharedServicesModule { }
