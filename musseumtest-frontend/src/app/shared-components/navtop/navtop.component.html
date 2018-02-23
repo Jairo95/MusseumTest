@@ -14,7 +14,7 @@
       <li class="nav-item" *ngIf="user==='teacher'">
         <a class="nav-link" [routerLink]="home + '/class'">Clase</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user!=='user'">
         <a class="nav-link" [routerLink]="home + '/quizzes'">Trivias</a>
       </li>
       <li class="nav-item dropdown" *ngIf="user!=='user'&&user!=='admincontent'">

@@ -18,8 +18,16 @@ namespace QuizAppWeb.Controllers
         public ViewWholeQuiz GetWholeQuiz(int QuizId)
         {
             ViewWholeQuiz listViewWholeQuiz = new ViewWholeQuiz();
-            var quiz = db.Quiz.Find(QuizId);
-            listViewWholeQuiz = quiz;
+            Quiz quiz = db.Quiz.Where(quizSeek => quizSeek.ClassroomOwner == QuizId).FirstOrDefault();
+            try
+            {
+                listViewWholeQuiz = quiz;
+            }
+            catch
+            {
+                return listViewWholeQuiz;
+            }
+           
             return listViewWholeQuiz;
         }
 

@@ -1,69 +1,30 @@
-<h1 class="text-center">Cuestionario</h1>
+<p-card *ngIf="!isQuiz">
+  <div style="text-align: center; width: 70%; margin-right: auto; margin-left: auto"><strong>Aulas disponibles</strong></div>
 
-<p-card>
-  <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 0.1cm; padding-top: 0.1cm" *ngFor="let question of questions.Questions">
-    <div class="row">
-      <div class="ui-g-2">
-        {{question.Observation}}
-      </div>
-
-      <div class="ui-g-6">
-        <p> Pregunta: {{question.Description}} </p>
-      </div>
-      <div class="col-sm-6">
-        <div class="row" *ngIf="question.CategoryId === 1">
-          <div class="ui-g-2">
-            <label>Respuesta:</label>
-
-          </div>
-          <div class="ui-g-2">
-            <input type="text"  size="30" pInputText [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]"/>
-          </div>
-          <div class="ui-g-2">
-          </div>
-        </div>
-        <div class="row" *ngIf="question.CategoryId === 2">
-          <div class="ui-g-2">
-            <label>Respuesta:</label>
-          </div>
-          <div class="ui-g-2">
-            <div class="ui-g" style="width:250px;margin-bottom:10px">
-              <div class="ui-g-12"><p-radioButton  value="Verdadero" label="Verdadero" [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]" ></p-radioButton></div>
-              <div class="ui-g-12"><p-radioButton  value="Falso" label="Falso" [(ngModel)]="answers[question.QuizId + '-' + question.QuestionId]" ></p-radioButton></div>
-            </div>
-            <div class="ui-g-2">
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-  <div class="ui-grid-row">
-
-    <div class="ui-g-4">
-    </div>
-    <div class="ui-g-4">
-      <button pButton type="button" (click)="sendResults()" label="Enviar Respuestas " class="ui-button-success"></button>
-    </div>
-
-    <div class="ui-g-4">
-    </div>
-  </div>
+  <p>Seleccione una clase para iniciar la trivia</p>
+  <p-table [columns]="cols" [value]="classrooms" selectionMode="single"
+           [(selection)]="selectedClassrooom" [rows]="5"
+           (onRowSelect)="onClassRoomSelected()"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </p-card>
 
-<p-dialog header="Calificacion" [(visible)]="display" [width]="300">
-  <div class="ui-g">
-    <div class="ui-g-8">
-      <p> Nombre: {{userN}} </p>
-    </div>
-    <div class="ui-g-4">
-      <p> Nota: {{grade}}/{{sizeQuestion}} </p>
-    </div>
+<app-userquiz *ngIf="isQuiz"
+              [classroomID]="idClassroomSelected"
+              (onFinishedTest)="onFinishedTest($event)"
 
-  </div>
-</p-dialog>
-
+></app-userquiz>

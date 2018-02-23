@@ -21,6 +21,8 @@ import { TeacherforadminsystemComponent } from './teacherforadminsystem/teacherf
 import { AdminsystemforadminsystemComponent } from './adminsystemforadminsystem/adminsystemforadminsystem.component';
 import { AdmincontentforadminsystemComponent } from './admincontentforadminsystem/admincontentforadminsystem.component';
 import { ClassroomsComponent } from './classrooms/classrooms.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { LevelsComponent } from './levels/levels.component';
 
 const routes: Routes = [
   {path: '', component: AdminsystemComponent},
@@ -30,8 +32,8 @@ const routes: Routes = [
   {path: 'admincontents', component: AdmincontentforadminsystemComponent},
   {path: 'quizzes', component: AdminsystemComponent},
   {path: 'classrooms', component: ClassroomsComponent},
-  {path: 'categories', component: AdminsystemComponent},
-  {path: 'levels', component: AdminsystemComponent}
+  {path: 'categories', component: CategoriesComponent},
+  {path: 'levels', component: LevelsComponent}
 ];
 
 @NgModule({
@@ -51,6 +53,6 @@ const routes: Routes = [
     DropdownModule,
     ButtonModule
   ],
-  declarations: [AdminsystemComponent, UserforadminsystemComponent, TeacherforadminsystemComponent, AdminsystemforadminsystemComponent, AdmincontentforadminsystemComponent, ClassroomsComponent]
+  declarations: [AdminsystemComponent, UserforadminsystemComponent, TeacherforadminsystemComponent, AdminsystemforadminsystemComponent, AdmincontentforadminsystemComponent, ClassroomsComponent, CategoriesComponent, LevelsComponent]
 })
 export class AdminsystemModule { }

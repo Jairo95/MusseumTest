@@ -19,7 +19,7 @@ namespace QuizAppWeb.Models.Views
         {
             return new ViewClassroom
             {
-                ClassroomId = classroom.UserManager,
+                ClassroomId = classroom.ClassroomId,
                 Name = classroom.Name,
                 Password = classroom.Password,
                 Description = classroom.Description,

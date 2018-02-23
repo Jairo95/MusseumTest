@@ -1,0 +1,25 @@
+<p-card >
+
+  <strong>Categorias</strong>
+  <p-table [columns]="cols" [value]="categories" selectionMode="single"
+           [(selection)]="selectedCategory" [rows]="5"
+           (onRowSelect)="onCategorySelected()"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+
+</p-card>

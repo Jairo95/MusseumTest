@@ -3,6 +3,8 @@ import {Record} from '../../models/record';
 import {RecordService} from '../../shared-services/record/record.service';
 import {SessionService} from '../../shared-services/session/session.service';
 
+import moment = require('moment'); moment();
+
 @Component({
   selector: 'app-userreport',
   templateUrl: './userreport.component.html',
@@ -40,7 +42,12 @@ export class UserreportComponent implements OnInit {
   getRecordByUser(userId: number) {
     this.recordService.getRecordByUser(userId)
       .subscribe(res=>{
-        this.records = res;
+        this.records = [];
+        res.map( record => {
+          console.log('[DATE]: ', moment(record.DateStart).format('YYYY-MM-DD'));
+          record.DateStart = moment(moment(record.DateStart).format('YYYY-MM-DD')).toDate();
+          this.records.push(record);
+        })
       });
   }
 
