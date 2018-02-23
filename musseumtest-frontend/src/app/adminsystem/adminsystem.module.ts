@@ -20,6 +20,7 @@ import {ButtonModule} from 'primeng/button';
 import { TeacherforadminsystemComponent } from './teacherforadminsystem/teacherforadminsystem.component';
 import { AdminsystemforadminsystemComponent } from './adminsystemforadminsystem/adminsystemforadminsystem.component';
 import { AdmincontentforadminsystemComponent } from './admincontentforadminsystem/admincontentforadminsystem.component';
+import { ClassroomsComponent } from './classrooms/classrooms.component';
 
 const routes: Routes = [
   {path: '', component: AdminsystemComponent},
@@ -28,7 +29,9 @@ const routes: Routes = [
   {path: 'adminsystems', component: AdminsystemforadminsystemComponent},
   {path: 'admincontents', component: AdmincontentforadminsystemComponent},
   {path: 'quizzes', component: AdminsystemComponent},
-  {path: 'reports', component: AdminsystemComponent}
+  {path: 'classrooms', component: ClassroomsComponent},
+  {path: 'categories', component: AdminsystemComponent},
+  {path: 'levels', component: AdminsystemComponent}
 ];
 
 @NgModule({
@@ -48,6 +51,6 @@ const routes: Routes = [
     DropdownModule,
     ButtonModule
   ],
-  declarations: [AdminsystemComponent, UserforadminsystemComponent, TeacherforadminsystemComponent, AdminsystemforadminsystemComponent, AdmincontentforadminsystemComponent]
+  declarations: [AdminsystemComponent, UserforadminsystemComponent, TeacherforadminsystemComponent, AdminsystemforadminsystemComponent, AdmincontentforadminsystemComponent, ClassroomsComponent]
 })
 export class AdminsystemModule { }
