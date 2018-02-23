@@ -1,0 +1,28 @@
+<p-card >
+  <p-header>Clases</p-header>
+
+
+
+  <strong>Pruebas rendidas</strong>
+  <p-table [columns]="cols" [value]="records" selectionMode="single"
+           [(selection)]="selectedRecord" [rows]="5"
+           (onRowSelect)="onRecordSelected()"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+
+</p-card>

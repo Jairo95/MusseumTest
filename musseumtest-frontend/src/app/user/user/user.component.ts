@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   sizeQuestion: number = 0;
 
   userN: String = localStorage.getItem('username');
-  userId: String = localStorage.getItem('userId');
+  userId: String = localStorage.getItem('id');
   grade: number = 0;
   questions: QuizaView = new QuizaView();
   answersCorrect = [] ;

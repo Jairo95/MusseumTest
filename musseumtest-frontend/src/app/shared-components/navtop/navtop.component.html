@@ -28,8 +28,18 @@
           <a class="dropdown-item" *ngIf="user==='adminsystem'" [routerLink]="home + '/admincontents'">Adms. Contenido</a>
         </div>
       </li>
+      <li class="nav-item dropdown" *ngIf="user==='adminsystem'">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLinkMn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mantenimiento
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkMn" >
+          <a class="dropdown-item" *ngIf="user==='adminsystem'" [routerLink]="home + '/classrooms'">Clases</a>
+          <a class="dropdown-item" *ngIf="user==='adminsystem'" [routerLink]="home + '/categories'">Categorias</a>
+          <a class="dropdown-item" *ngIf="user==='adminsystem'" [routerLink]="home + '/levels'">Niveles</a>
+        </div>
+      </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="home + '/reports'">Resultados</a>
+        <a class="nav-link" *ngIf="user!=='adminsystem'" [routerLink]="home + '/reports'">Resultados</a>
       </li>
 
     </ul>

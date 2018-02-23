@@ -4,12 +4,11 @@
   <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 0.1cm; padding-top: 0.1cm" *ngFor="let question of questions.Questions">
     <div class="row">
       <div class="ui-g-2">
-        <h3>{{question.description}}</h3>
+        {{question.Observation}}
       </div>
 
-      <div class="ui-g-2">
+      <div class="ui-g-6">
         <p> Pregunta: {{question.Description}} </p>
-        <p> tipo: {{question.CategoryId}}</p>
       </div>
       <div class="col-sm-6">
         <div class="row" *ngIf="question.CategoryId === 1">

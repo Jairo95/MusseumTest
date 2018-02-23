@@ -12,10 +12,12 @@ import {CardModule} from 'primeng/card';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
+import { UserreportComponent } from './userreport/userreport.component';
+import {TableModule} from 'primeng/table';
 const routes: Routes = [
   {path: '', component: UserComponent},
   {path: 'quizzes', component: UserComponent},
-  {path: 'reports', component: UserComponent}
+  {path: 'reports', component: UserreportComponent}
 ];
 
 @NgModule({
@@ -30,10 +32,11 @@ const routes: Routes = [
     RadioButtonModule,
     DialogModule,
     CardModule,
+    TableModule,
     RouterModule.forChild(routes)
   ], providers: [
     UserService
   ],
-  declarations: [UserComponent]
+  declarations: [UserComponent, UserreportComponent]
 })
 export class UserModule { }

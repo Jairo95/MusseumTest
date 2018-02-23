@@ -58,7 +58,7 @@ export class UserService {
     body.set('DateStart', dateformat.trim());
     body.set('DateEnd',dateformat.trim());
     body.set('Grade', grade);
-
+    console.log('[RECORD]: ', body.toString());
 
     return this.http.post(url, body.toString(), httpOptions );
   }

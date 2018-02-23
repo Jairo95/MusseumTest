@@ -14,7 +14,7 @@ export class TeacherComponent implements OnInit {
   constructor() {
     this.typeQuestions = [
       {label: 'Selecciones tipo de pregunta', value: '0'},
-      {label: 'Pregunta simpe', value: '1'},
+      {label: 'Pregunta simple', value: '1'},
       {label: 'Pregunta Verdadero o falso', value: '2'},
       {label: 'pregunta selección única respuesta respuesta', value: '3'},
       {label: 'pregunta selección múltiple', value: '4'},
